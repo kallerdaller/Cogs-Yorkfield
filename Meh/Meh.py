@@ -8,7 +8,7 @@ class Mycog:
         self.bot = bot
 
     @commands.command()
-    async def mycom(self):
+    async def meh(self):
         """This does stuff!"""
 
         #Your code will go here
