@@ -12,7 +12,6 @@ class Mycog:
         """Tags a person and tells them meh"""
 
         #Your code will go here
-        delete_message(ctx.message)
         await self.bot.say(user.mention + ", " + discord.Message(author) + "says 'Meh'")
 
 def setup(bot):
