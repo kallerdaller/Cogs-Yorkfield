@@ -12,7 +12,7 @@ class Mycog:
         """Tags a person and tells them meh"""
 
         #Your code will go here
-        await self.bot.say(user.mention + ", " + discord.Message(author) + "says 'Meh'")
+        await self.bot.say(user.mention + "says 'Meh'")
 
 def setup(bot):
     bot.add_cog(Mycog(bot))
