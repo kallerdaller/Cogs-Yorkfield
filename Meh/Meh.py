@@ -8,11 +8,11 @@ class Mycog:
         self.bot = bot
 
     @commands.command()
-    async def meh(self):
+    async def meh(self, user : discord.Member):
         """This does stuff!"""
 
         #Your code will go here
-        await self.bot.say("I can do stuff!")
+        await self.bot.say("Meh " + user.mention)
 
 def setup(bot):
     bot.add_cog(Mycog(bot))
