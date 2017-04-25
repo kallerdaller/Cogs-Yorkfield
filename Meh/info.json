@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "kaller",
+    "SHORT" : "Says meh",
+    "DESCRIPTION" : "Allows you to tag a user saying Meh",
+    "DISABLED" : false,
+    "NAME" : "Meh",
+    "REQUIREMENTS" : [],
+    "TAGS" : ["yorkfield"],
+    "INSTALL_MSG" : "Thanks for installing (However this was made for Yorkfield)"
+}
