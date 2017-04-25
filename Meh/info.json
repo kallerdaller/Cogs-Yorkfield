@@ -6,6 +6,6 @@
     "NAME" : "Meh",
     "REQUIREMENTS" : [],
     "TAGS" : ["yorkfield"],
-    "INSTALL_MSG" : "Thanks for installing (However this was made for Yorkfield)"
-    "HIDDEN" : false
+    "INSTALL_MSG" : "Thanks for installing (However this was made for Yorkfield)",
+    "HIDDEN" : false,
 }
