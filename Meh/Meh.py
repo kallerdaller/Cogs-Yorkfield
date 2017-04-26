@@ -12,8 +12,8 @@ class Mycog:
         """Tags a person and tells them meh"""
 
         #Your code will go here
-        author = ctx.message.author
-        await self.bot.say(user.mention + ", " + "says 'Meh'" + author.id + author.name)
+        author = ctx.message.author.name
+        await self.bot.say(user.mention + ", " + "says 'Meh'" + author)
 
 def setup(bot):
     bot.add_cog(Mycog(bot))
