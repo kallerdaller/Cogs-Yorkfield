@@ -13,7 +13,7 @@ class Mycog:
 
         #Your code will go here
         author = ctx.message.author
-        await self.bot.say(user.mention + ", " + "says 'Meh'" + author.mention)
+        await self.bot.say(user.mention + ", " + author.mention + " says 'Meh'")
 
 def setup(bot):
     bot.add_cog(Mycog(bot))
