@@ -15,7 +15,7 @@ class Mycog:
         message = ctx.message
         await self.bot.delete_message(message)
         author = ctx.message.author
-        await self.bot.say("Hey, " + user.mention + ", " + author.mention + " says 'Meh'")
+        await self.bot.say("Hey, " + user.mention + ", " + author.mention + " wanted to tell you 'Meh'")
 
 def setup(bot):
     bot.add_cog(Mycog(bot))
