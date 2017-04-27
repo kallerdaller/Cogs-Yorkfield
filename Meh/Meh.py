@@ -12,7 +12,7 @@ class Mycog:
         """Tags a person and tells them meh"""
 
         #Your code will go here
-        message = ctx.message.id
+        message = ctx.message
         await self.bot.delete_message(message)
         author = ctx.message.author
         await self.bot.say("Hey, " + user.mention + ", " + author.mention + " says 'Meh'")
