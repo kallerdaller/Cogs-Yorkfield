@@ -13,7 +13,7 @@ class Mycog:
 
         #Your code will go here
         message = discord.Message.id
-        delete_message(message)
+        await self.bot.delete_message(message)
         author = ctx.message.author
         await self.bot.say("Hey, " + user.mention + ", " + author.mention + " says 'Meh'")
 
