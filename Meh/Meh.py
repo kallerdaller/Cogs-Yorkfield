@@ -8,7 +8,7 @@ class Mycog:
         self.bot = bot
 
     @commands.command(pass_context=True)
-    async def meh(self, ctx, user : discord.Member message : discord.Message):
+    async def meh(self, ctx, user : discord.Member, message : discord.Message):
         """Tags a person and tells them meh"""
 
         #Your code will go here
