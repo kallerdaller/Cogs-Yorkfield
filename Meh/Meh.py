@@ -8,10 +8,11 @@ class Mycog:
         self.bot = bot
 
     @commands.command(pass_context=True)
-    async def meh(self, ctx, user : discord.Member):
+    async def meh(self, ctx, user : discord.Member message : discord.Message):
         """Tags a person and tells them meh"""
 
         #Your code will go here
+        delete_message(message)
         author = ctx.message.author
         await self.bot.say("Hey, " + user.mention + ", " + author.mention + " says 'Meh'")
 
