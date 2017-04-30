@@ -18,9 +18,10 @@ class Mycog:
         #Your code will go here
         user = ctx.message.author
         bank = self.bot.get_cog("Economy").bank
-        if type == start:
-            
-        await self.bot.say("")
+        if type.lower() == "start":
+            await self.bot.say("Start")
+        else if type.lower() == "join":
+            await.self.bot.say("Join")
         
 
 def check_folders():
