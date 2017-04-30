@@ -32,10 +32,16 @@ class Russianroulette:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
         
 def betAmount():
-    async @client.event
-    await client.send_message(message.channel, 'say hello')
-    msg = await client.wait_for_message(author=message.author, content='hello')
-    await client.send_message(message.channel, 'Hello.')
+    @client.event
+    async def on_message(message):
+        if message.content.startswith('$start'):
+            await client.send_message(message.channel, 'Type $stop 4 times.')
+            for i in range(4):
+                msg = await client.wait_for_message(author=message.author, content='$stop')
+                fmt = '{} left to go...'
+                await client.send_message(message.channel, fmt.format(3 - i))
+
+            await client.send_message(message.channel, 'Good job!')
         
 
 def check_folders():
