@@ -27,7 +27,7 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
-                await self.betAmount(user)
+                await self.betAmount(user, bank)
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
@@ -36,7 +36,7 @@ class Russianroulette:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
             
     @client.event
-    async def betAmount(self, user):
+    async def betAmount(self, user, bank):
         await self.bot.say("How much would you like to put on the line: $")
         bet = await self.bot.wait_for_message(timeout=30, author=user)
         if bet is None:
@@ -53,7 +53,7 @@ class Russianroulette:
                 await self.bot.say("You don't have enough to place a bet of $" + str(bet) + "You only have $" + str(bank.get_balance(user)))
         else:
             await self.bot.say("You must enter a number")
-            await self.betAmount(user)
+            await self.betAmount(user, bank)
             
 
 def check_folders():
