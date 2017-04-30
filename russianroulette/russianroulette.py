@@ -28,7 +28,7 @@ class Russianroulette:
         elif type.lower() == "join":
             await self.bot.say("Join")
         else:
-            await self.bot.say(user.mention + "Type can only be start or join")
+            await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
         
 
 def check_folders():
