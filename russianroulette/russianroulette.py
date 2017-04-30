@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import os
 from .utils.dataIO import dataIO
+import time
+import asyncio
 
 class Russianroulette:
     """Russian Roulette"""
