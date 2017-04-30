@@ -55,6 +55,7 @@ class Russianroulette:
                 self.json_data["System"]["Bet"] = 0
                 f = "data/russianroulette/russianroulette.json"
                 dataIO.save_json(f, self.json_data)
+                await self.bot.say("The roulette has been cancelled")
             else:
                 await self.bot.say("You must be the person who started the roulette and you must currently be waiting for people to join")
         else:
