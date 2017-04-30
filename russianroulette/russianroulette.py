@@ -33,8 +33,7 @@ class Russianroulette:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
             if self.json_data["System"]["Status"] == "Waiting":
-                #await self.joinGame(user, bank)
-                await self.bot.say("ASD")
+                await self.joinGame(user, bank)
             elif self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("No game to join, type `*rr start` to create a game")
             else:
@@ -67,7 +66,9 @@ class Russianroulette:
         else:
             await self.bot.say("You must enter a number")
             await self.betAmount(user, bank)
-    async def 
+    
+    async def joinGame(self, user, bank):
+        await self.bot.say("asd")
             
 
 def check_folders():
