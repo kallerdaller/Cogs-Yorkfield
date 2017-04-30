@@ -45,7 +45,7 @@ class Russianroulette:
         bet = int(str(bet.content))
         print(type(bet))
         typeas = type(bet)
-        print(type)
+        print(typeas)
         if bet is int:
             await self.bot.say("Bet placed at $" + string(bet))
         else:
