@@ -27,10 +27,17 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.betAmount(user, bank)
+            else if self.json_data["System"]["Status"] = "Waiting":
+                await self.bot.say("Game has been made, to join it type `*rr join`")
             else:
-                await self.bot.say("Start")
+                await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
-            await self.bot.say("Join")
+            if self.json_data["System"]["Status"] = "Waiting":
+                #await self.joinGame(user, bank)
+            else if self.json_data["System"]["Status"] = "Stopped":
+                await self.bot.say("No game to join, type `*rr start` to create a game")
+            else:
+                await self.bot.say("Game is in progress, please wait until it's finished")
         else:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
             
@@ -48,6 +55,8 @@ class Russianroulette:
         if isinstance(bet , int):
             if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
+                    self.json_data["System"]["Bet"] = bet
+                    self.json_data["System"]["Status"] = "Waiting"
                     await self.bot.say("Bet placed at $" + str(bet))
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
@@ -57,6 +66,7 @@ class Russianroulette:
         else:
             await self.bot.say("You must enter a number")
             await self.betAmount(user, bank)
+    async def 
             
 
 def check_folders():
