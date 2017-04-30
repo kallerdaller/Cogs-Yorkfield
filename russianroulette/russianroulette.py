@@ -46,7 +46,7 @@ class Russianroulette:
         except ValueError:
             pass
         if isinstance(bet , int):
-            if account_exists(user):
+            if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
                     await self.bot.say("Bet placed at $" + str(bet))
                 else:
