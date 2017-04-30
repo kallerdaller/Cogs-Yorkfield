@@ -102,6 +102,7 @@ class Russianroulette:
                     await self.bot.say("The bet is set to: $" + str(bet) + "\nWould you still like to enter? Y/N")
                     answer = ""
                     answer = await self.bot.wait_for_message(timeout=10, author=user)
+                    answer = str(answer)
                     if answer is None or answer.lower() == "n" or answer.lower() == "no":
                         await self.bot.say("Very well, you haven't been entered")
                         return
