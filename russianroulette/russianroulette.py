@@ -43,7 +43,8 @@ class Russianroulette:
             await self.bot.say("You didn't enter anything")
             return
         try:
-            print(message.content)
+            print(type(bet))
+            print(bet.content)
             bet = int(str(bet.content))
         except TypeError:
             pass
