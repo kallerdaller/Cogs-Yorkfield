@@ -4,6 +4,7 @@ import os
 from .utils.dataIO import dataIO
 import time
 import asyncio
+from random import randint
 
 client = discord.Client()
 
@@ -29,7 +30,8 @@ class Russianroulette:
                 await self.betAmount(user, bank)
             elif self.json_data["System"]["Status"] == "Waiting":
                 if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
-                    await self.startGame(bank, ctx)
+                    totalPlayers = self.json_data["System"]["Player Count"]
+                    await self.startGame(bank, ctx, totalPlayers)
                 else:
                     await self.bot.say("Game has been made, to join it type `*rr join`. Only the creator of the roulette can start it and there must be more than 1 person")
             else:
@@ -121,15 +123,43 @@ class Russianroulette:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
         
-    async def startGame(self, bank, ctx):
+    async def startGame(self, bank, ctx, totalPlayers):
         i = 1
+        a = 1
         await self.bot.say("Game is starting")
         while i <= self.json_data["System"]["Player Count"]:
             bank.withdraw_credits(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(i)]), self.json_data["System"]["Bet"])
             i += 1
-            await self.bot.say("Money removed")
-        await self.bot.say("Money removed")
+        while self.json_data["System"]["Player count"] > 1:
+            await self.play(ctx, a)
+            a += 1
+        a = 1
+        winner = ""
+        while winner = "":
+            if self.json_data["Players"][str(a)] == "":
+                a += 1
+            else:
+                winner = self.json_data["Players"][str(a)]
+        deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
+        await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + self.json_data["System"]["Bet"] * totalPlayers)
             
+        
+    async def play(self, ctx, a):
+        if self.json_data["Players"][str((a%6)=1)] == "":
+            return
+        time.wait(2)
+        await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(i)]).mention + " picks up the gun...")
+        time.wait(2)
+        await self.bot.say("They pull the trigger...")
+        time.wait(1)
+        if randint(1, 20) >= 7:
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "you're still alive")
+        else: 
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "shot their brains out")
+            self.json_data["Players"][str((a%6)=1)] = ""
+            self.json_data["System"]["Player Count"] += -1
+            f = "data/russianroulette/russianroulette.json"
+            dataIO.save_json(f, system)
             
 
 def check_folders():
