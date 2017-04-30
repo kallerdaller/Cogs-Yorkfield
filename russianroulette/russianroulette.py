@@ -23,7 +23,7 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
-                betAmount()
+                await betAmount()
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
