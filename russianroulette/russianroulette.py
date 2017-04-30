@@ -29,7 +29,7 @@ class Russianroulette:
                 await self.betAmount(user, bank)
             elif self.json_data["System"]["Status"] == "Waiting":
                 if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
-                    await self.startGame(bank)
+                    await self.startGame(bank, ctx)
                 else:
                     await self.bot.say("Game has been made, to join it type `*rr join`. Only the creator of the roulette can start it and there must be more than 1 person")
             else:
@@ -121,7 +121,7 @@ class Russianroulette:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
         
-    async def startGame(self, bank):
+    async def startGame(self, bank, ctx):
         i = 1
         await self.bot.say("Game is starting")
         while i <= self.json_data["System"]["Player Count"]:
