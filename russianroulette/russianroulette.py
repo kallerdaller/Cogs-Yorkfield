@@ -41,8 +41,8 @@ async def betAmount():
         bet = int(float(bet))
         await self.bot.say("Bet placed at $" + string(bet)
     else:
-         await self.bot.say("You must enter a number")
-         betAmount()
+        await self.bot.say("You must enter a number")
+        betAmount()
 
 def check_folders():
     if not os.path.exists("data/russianroulette"): 
