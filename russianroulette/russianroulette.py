@@ -33,9 +33,9 @@ class Russianroulette:
         
 def betAmount():
     try:
-        await client.send_message(message.channel, 'Say hello')
-        bet = await client.wait_for_message(author=message.author, content='hello')
-        await client.send_message(message.channel, 'Hello.')
+        await user.send_message(message.channel, 'Say hello')
+        bet = await user.wait_for_message(author=message.author, content='hello')
+        await user.send_message(message.channel, 'Hello.')
     except:
         pass
         
