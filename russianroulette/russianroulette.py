@@ -25,7 +25,7 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
-                betAmount()
+                await self.betAmount()
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
@@ -42,7 +42,7 @@ async def betAmount():
         await self.bot.say("Bet placed at $" + string(bet))
     else:
         await self.bot.say("You must enter a number")
-        betAmount()
+        await self.betAmount()
 
 def check_folders():
     if not os.path.exists("data/russianroulette"): 
