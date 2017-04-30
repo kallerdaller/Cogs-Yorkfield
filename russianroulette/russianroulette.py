@@ -63,7 +63,7 @@ class Russianroulette:
     @client.event
     async def betAmount(self, user, bank):
         await self.bot.say("How much would you like to put on the line: $")
-        bet = await self.bot.wait_for_message(timeout=30, author=user)
+        bet = await self.bot.wait_for_message(timeout=10, author=user)
         if bet is None:
             await self.bot.say("You didn't enter anything")
             return
@@ -84,14 +84,31 @@ class Russianroulette:
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
             else:
-                await self.bot.say("You don't have a bank account, create one first with *bank register")
+                await self.bot.say("You don't have a bank account, create one first with `*bank register`")
                 return               
         else:
             await self.bot.say("You must enter a number")
             await self.betAmount(user, bank)
     
     async def joinGame(self, user, bank):
-        await self.bot.say("asd")
+        if self.json_data["System"]["Player Count"] == 6:
+            await self.bot.say("The game is full, please wait until it has finished to join")
+        elif bank.account_exists(user):
+            if bank.get_balance(user) > bet:
+                await self.bot.say("The bet is set to: $" + str(bet) + "\nWould you still like to enter? Y/N")
+                answer = ""
+                answer = await self.bot.wait_for_message(timeout=10, author=user)
+                if answer is None or answer.lower() == "n" or answer.lower() == "no":
+                    await self.bot.say("Very well, you haven't been entered")
+                    return
+                elif answer.lower() == "y" or answer.lower() == "yes"
+                    self.json_data["System"]["Player Count"] += 1
+                    self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
+                    await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"])
+        else:
+            await self.bot.say("You don't have a bank account. Make one with `*bank register`")
+            return
+            
             
 
 def check_folders():
