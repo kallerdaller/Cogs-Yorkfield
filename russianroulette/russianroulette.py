@@ -145,18 +145,18 @@ class Russianroulette:
             
         
     async def play(self, ctx, a):
-        if self.json_data["Players"][str((a%6)+1)] == "":
+        if self.json_data["Players"][str((a%7))] == "":
             return
         time.sleep(2)
-        await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(a)]).mention + " picks up the gun...")
+        await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(a%7)]).mention + " picks up the gun...")
         time.sleep(2)
         await self.bot.say("They pull the trigger...")
         time.sleep(1)
         if randint(1, 20) >= 7:
-            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + " you're still alive")
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " you're still alive")
         else: 
-            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + " shot their brains out")
-            self.json_data["Players"][str((a%6)+1)] = ""
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " shot their brains out")
+            self.json_data["Players"][str((a%6))] = ""
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
             dataIO.save_json(f, self.json_data)
