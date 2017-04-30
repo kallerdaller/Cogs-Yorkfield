@@ -32,9 +32,7 @@ class Russianroulette:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
         
 def betAmount():
-    @client.event
-    async def on_message(message):
-        wait_for_message(author=message.author)
+    wait_for_message(author=message.author)
         
 
 def check_folders():
