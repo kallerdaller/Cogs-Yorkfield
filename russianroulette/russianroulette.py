@@ -8,7 +8,7 @@ class Mycog:
     
     def __init__(self, bot):
         self.bot = bot
-        self.file_path = data/russianroulette/russianroulette.json"
+        self.file_path = "data/russianroulette/russianroulette.json"
         self.json_data = dataIO.load_json(self.file_path) 
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
