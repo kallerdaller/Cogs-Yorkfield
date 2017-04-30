@@ -43,7 +43,7 @@ class Russianroulette:
                 await self.bot.say("There is no game running to stop")
             elif self.json_data["System"]["Status"] == "Running":
                 await self.bot.say("The game is running and can only be stopped when in the lobby waiting")
-            if user == self.json_data["Players"][0]:
+            if user.id == self.json_data["Players"][0]:
                 self.json_data["Players"]["1"] = ""
                 self.json_data["Players"]["2"] = ""
                 self.json_data["Players"]["3"] = ""
@@ -75,7 +75,7 @@ class Russianroulette:
             if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
                     self.json_data["System"]["Bet"] = bet
-                    self.json_data["Players"]["1"] = user
+                    self.json_data["Players"]["1"] = user.id
                     self.json_data["System"]["Player Count"] += 1
                     self.json_data["System"]["Status"] = "Waiting"
                     f = "data/russianroulette/russianroulette.json"
