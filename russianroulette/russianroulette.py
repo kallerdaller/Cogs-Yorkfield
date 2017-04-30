@@ -38,10 +38,10 @@ def check_files():
               "Players": {},
               "Config": {"Min Bet": 10}}
 
-f = "data/russianroulette/russianroulette.json"
-if not dataIO.is_valid_json(f):
-    print("Creating defualt russianroulette.json...")
-    dataIO.save_json(f, system)
+    f = "data/russianroulette/russianroulette.json"
+    if not dataIO.is_valid_json(f):
+        print("Creating defualt russianroulette.json...")
+        dataIO.save_json(f, system)
 
 def setup(bot):
     check_folders()
