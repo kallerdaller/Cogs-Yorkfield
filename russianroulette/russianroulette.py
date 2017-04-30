@@ -48,7 +48,6 @@ class Russianroulette:
         if isinstance(bet , int):
             if account_exists(user):
                 if bank.get_balance(user) > bet:
-                    
                     await self.bot.say("Bet placed at $" + str(bet))
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
@@ -72,8 +71,7 @@ def check_files():
                          "Roulette Initial": False,
                          "Status": "Stopped",
                          "Player Count": 0},
-              "Players": {},
-
+              "Players": {}
     f = "data/russianroulette/russianroulette.json"
     if not dataIO.is_valid_json(f):
         print("Creating defualt russianroulette.json...")
