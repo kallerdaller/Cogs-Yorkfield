@@ -34,7 +34,7 @@ class Russianroulette:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
             
             
-def betAmount():
+async def betAmount():
     bet = await self.bot.wait_for_message(timeout=60, author=user, check=check)
 
 def check_folders():
