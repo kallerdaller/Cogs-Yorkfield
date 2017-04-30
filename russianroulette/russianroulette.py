@@ -47,7 +47,7 @@ class Russianroulette:
         typeas = type(bet)
         print(typeas)
         if isinstance(bet , int):
-            await self.bot.say("Bet placed at $" + string(bet))
+            await self.bot.say("Bet placed at $" + str(bet))
         else:
             await self.bot.say("You must enter a number")
             await self.betAmount(user)
