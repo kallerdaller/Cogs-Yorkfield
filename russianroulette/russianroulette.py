@@ -24,7 +24,7 @@ class Russianroulette:
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
-            
+            await self.bot.say("Join")
         
 
 def check_folders():
