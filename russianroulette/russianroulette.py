@@ -44,7 +44,12 @@ class Russianroulette:
             elif self.json_data["System"]["Status"] == "Running":
                 await self.bot.say("The game is running and can only be stopped when in the lobby waiting")
             if user == self.json_data["Players"][0]:
-                self.json_data["Players"] = []
+                self.json_data["Players"]["1"] = ""
+                self.json_data["Players"]["2"] = ""
+                self.json_data["Players"]["3"] = ""
+                self.json_data["Players"]["4"] = ""
+                self.json_data["Players"]["5"] = ""
+                self.json_data["Players"]["6"] = ""
                 self.json_data["System"]["Player Count"] = 0
                 self.json_data["System"]["Status"] = "Stopped"
                 self.json_data["System"]["Bet"] = 0
@@ -70,7 +75,7 @@ class Russianroulette:
             if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
                     self.json_data["System"]["Bet"] = bet
-                    self.json_data["Players"].append(user)
+                    self.json_data["Players"]["1"] = user
                     self.json_data["System"]["Player Count"] += 1
                     self.json_data["System"]["Status"] = "Waiting"
                     f = "data/russianroulette/russianroulette.json"
@@ -98,7 +103,12 @@ def check_files():
     system = {"System": {"Bet": 0,
                          "Status": "Stopped",
                          "Player Count": 0},
-              "Players": []}
+              "Players": {"1": "",
+                          "2": "",
+                          "3": "",
+                          "4": "",
+                          "5": "",
+                          "6": ""}}
     f = "data/russianroulette/russianroulette.json"
     if not dataIO.is_valid_json(f):
         print("Creating defualt russianroulette.json...")
