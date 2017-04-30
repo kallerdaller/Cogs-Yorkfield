@@ -42,9 +42,9 @@ def check_files():
                          "Active": False,
                          "Start Bet": 0,
                          "Roulette Initial": False,
+                         "Status": "Stopped",
                          "Player Count": 0},
               "Players": {},
-              "Status": "Stopped",
               "Config": {"Min Bet": 10}}
 
     f = "data/russianroulette/russianroulette.json"
