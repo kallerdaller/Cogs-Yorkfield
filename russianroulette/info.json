@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "kaller",
+    "SHORT" : "RR",
+    "INSTALL_MSG" : "Successfully installed Rusian Roulette, the command is [p]RR, [p]Russian or [p]RussianRoulette",
+    "DESCRIPTION" : "All put forward a set amount of money and winner takes all",
+    "DISABLED" : false,
+    "NAME" : "Russian Rulette",
+    "TAGS" : ["yorkfield", "gambling", "economy"],
+    "HIDDEN" : false,
+}
