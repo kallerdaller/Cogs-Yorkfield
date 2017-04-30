@@ -43,7 +43,7 @@ class Russianroulette:
                 await self.bot.say("There is no game running to stop")
             elif self.json_data["System"]["Status"] == "Running":
                 await self.bot.say("The game is running and can only be stopped when in the lobby waiting")
-            if user.id == self.json_data["Players"][0]:
+            if user.id == self.json_data["Players"]["1"]:
                 self.json_data["Players"]["1"] = ""
                 self.json_data["Players"]["2"] = ""
                 self.json_data["Players"]["3"] = ""
