@@ -8,10 +8,12 @@ class Mycog:
         self.bot = bot
         
     @commands.command(pass_contect=True, aliases=["rr", "russian"])
-    async def russianroulette(self):
+    async def russianroulette(self, ctx, type):
         """This does stuff!"""
         
         #Your code will go here
+        user = ctx.message.author
+        bank = self.bot.get_cog("Economy").bank
         await self.bot.say("I can do stuff!")
         
 def setup(bot):
