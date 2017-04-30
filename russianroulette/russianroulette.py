@@ -34,6 +34,7 @@ class Russianroulette:
         elif type.lower() == "join":
             if self.json_data["System"]["Status"] == "Waiting":
                 #await self.joinGame(user, bank)
+                await self.bot.say("ASD")
             elif self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("No game to join, type `*rr start` to create a game")
             else:
