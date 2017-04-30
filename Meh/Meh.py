@@ -18,4 +18,5 @@ class Mycog:
         await self.bot.say("Hey, " + user.mention + ", " + author.mention + " wanted to tell you 'Meh'")
 
 def setup(bot):
-    bot.add_cog(Meh(bot))
+    n = Meh(bot)
+    bot.add_cog(n)
