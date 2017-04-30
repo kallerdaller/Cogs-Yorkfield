@@ -112,7 +112,7 @@ class Russianroulette:
                         return
                     elif answer.lower() == "y" or answer.lower() == "yes":
                         self.json_data["System"]["Player Count"] += 1
-                        self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user
+                        self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
                         f = "data/russianroulette/russianroulette.json"
                         dataIO.save_json(f, self.json_data)
                         await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"]))
@@ -125,8 +125,7 @@ class Russianroulette:
         i = 1
         await self.bot.say("Game is starting")
         while i <= self.json_data["System"]["Player Count"]:
-            usera = self.json_data["Players"][str(i)]
-            await self.bot.say(usera.mention)
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(i)]).mention)
             bank.withdraw_credits(self.json_data["Players"][str(i)], self.json_data["System"]["Bet"])
             i += 1
             await self.bot.say("Money removed")
