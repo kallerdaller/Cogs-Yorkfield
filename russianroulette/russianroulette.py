@@ -94,20 +94,23 @@ class Russianroulette:
         if self.json_data["System"]["Player Count"] == 6:
             await self.bot.say("The game is full, please wait until it has finished to join")
         elif bank.account_exists(user):
-            if bank.get_balance(user) > bet:
-                await self.bot.say("The bet is set to: $" + str(bet) + "\nWould you still like to enter? Y/N")
-                answer = ""
-                answer = await self.bot.wait_for_message(timeout=10, author=user)
-                if answer is None or answer.lower() == "n" or answer.lower() == "no":
-                    await self.bot.say("Very well, you haven't been entered")
-                    return
-                elif answer.lower() == "y" or answer.lower() == "yes":
-                    self.json_data["System"]["Player Count"] += 1
-                    self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
-                    f = "data/russianroulette/russianroulette.json"
-                    dataIO.save_json(f, self.json_data)
-                    await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"]))
-                    return
+            if user == self.json_data["Players"](["1"] or ["2"] or ["3"] or ["4"] or ["5"] or ["6"])
+                await self.bot.say("You're alreadyt entered")
+            else:
+                if bank.get_balance(user) > bet:
+                    await self.bot.say("The bet is set to: $" + str(bet) + "\nWould you still like to enter? Y/N")
+                    answer = ""
+                    answer = await self.bot.wait_for_message(timeout=10, author=user)
+                    if answer is None or answer.lower() == "n" or answer.lower() == "no":
+                        await self.bot.say("Very well, you haven't been entered")
+                        return
+                    elif answer.lower() == "y" or answer.lower() == "yes":
+                        self.json_data["System"]["Player Count"] += 1
+                        self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
+                        f = "data/russianroulette/russianroulette.json"
+                        dataIO.save_json(f, self.json_data)
+                        await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"]))
+                        return
         else:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
