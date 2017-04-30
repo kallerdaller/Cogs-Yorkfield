@@ -71,7 +71,7 @@ def check_files():
                          "Roulette Initial": False,
                          "Status": "Stopped",
                          "Player Count": 0},
-              "Players": {}
+              "Players": {}}
     f = "data/russianroulette/russianroulette.json"
     if not dataIO.is_valid_json(f):
         print("Creating defualt russianroulette.json...")
