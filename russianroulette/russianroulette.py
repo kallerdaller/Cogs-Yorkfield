@@ -43,7 +43,10 @@ class Russianroulette:
             await self.bot.say("You didn't enter anything")
             return
         bet = int(str(bet.content))
-        if bet.isclass(int):
+        print(type(bet))
+        type = type(bet)
+        print(type)
+        if bet is int:
             await self.bot.say("Bet placed at $" + string(bet))
         else:
             await self.bot.say("You must enter a number")
