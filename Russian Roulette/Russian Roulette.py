@@ -2,13 +2,13 @@ import discord
 from discord.ext import commands
 
 class Mycog:
-    """My custom cog that does stuff!"""
+    ""Russian Roulette"""
 
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_contect=True)
-    async def mycom(self):
+    @commands.command(pass_contect=True, aliases=["RR", "Russian"])
+    async def RussianRoulette(self):
         """This does stuff!"""
 
         #Your code will go here
