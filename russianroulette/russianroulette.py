@@ -91,6 +91,7 @@ class Russianroulette:
             await self.betAmount(user, bank)
     
     async def joinGame(self, user, bank):
+        bet = self.json_data["Bet"]
         if self.json_data["System"]["Player Count"] == 6:
             await self.bot.say("The game is full, please wait until it has finished to join")
         elif bank.account_exists(user):
