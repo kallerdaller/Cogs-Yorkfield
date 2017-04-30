@@ -147,7 +147,7 @@ class Russianroulette:
     async def play(self, ctx, a):
         try:
             if self.json_data["Players"][str((a%7))] == "":
-            return
+                return
         except KeyError:
             return
         time.sleep(2)
