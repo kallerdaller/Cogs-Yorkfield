@@ -28,7 +28,7 @@ class Russianroulette:
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.betAmount(user, bank)
             elif self.json_data["System"]["Status"] == "Waiting":
-                if user == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
+                if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
                     self.startGame(bank)
                 await self.bot.say("Game has been made, to join it type `*rr join`")
             else:
