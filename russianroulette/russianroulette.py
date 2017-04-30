@@ -19,7 +19,10 @@ class Russianroulette:
         user = ctx.message.author
         bank = self.bot.get_cog("Economy").bank
         if type.lower() == "start":
-            await self.bot.say("Start")
+            if system.status == "Stopped":
+                await self.bot.say("Bet")
+            else:
+                await self.bot.say("Start")
         elif type.lower() == "join":
             
         
