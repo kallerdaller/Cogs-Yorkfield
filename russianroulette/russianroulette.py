@@ -23,7 +23,7 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
-                betAmount()
+                betAmount(user)
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
@@ -31,7 +31,7 @@ class Russianroulette:
         else:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
         
-def betAmount():
+def betAmount(user):
     try:
         await user.send_message(message.channel, 'Say hello')
         bet = await user.wait_for_message(author=message.author, content='hello')
