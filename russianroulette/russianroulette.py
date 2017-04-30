@@ -21,7 +21,7 @@ class Russianroulette:
         if type.lower() == "start":
             await self.bot.say("Start")
         elif type.lower() == "join":
-            await self.bot.say("Join")
+            
         
 
 def check_folders():
@@ -36,6 +36,7 @@ def check_files():
                          "Roulette Initial": False,
                          "Player Count": 0},
               "Players": {},
+              "Status": "Stopped",
               "Config": {"Min Bet": 10}}
 
     f = "data/russianroulette/russianroulette.json"
