@@ -23,7 +23,7 @@ class Russianroulette:
         
         #Your code will go here
         user = ctx.message.author
-        bank = bot.get_cog("Economy").bank
+        bank = self.bot.get_cog("Economy").bank
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.betAmount(user, bank)
