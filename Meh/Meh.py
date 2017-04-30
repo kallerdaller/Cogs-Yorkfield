@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class Mycog:
+class Meh:
     """Tells a user that you said meh"""
 
     def __init__(self, bot):
