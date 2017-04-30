@@ -15,7 +15,7 @@ class Meh:
         message = ctx.message
         await self.bot.delete_message(message)
         author = ctx.message.author
-        await self.bot.say("Hey, " + user.mention + ", " + author.mention + " wanted to tell you 'Meh'")
+        await self.bot.say("Hey, " + user.mention + "!! " + author.mention + " wanted to tell you 'Meh'")
 
 def setup(bot):
     n = Meh(bot)
