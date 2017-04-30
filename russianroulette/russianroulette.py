@@ -125,6 +125,8 @@ class Russianroulette:
         i = 1
         await self.bot.say("Game is starting")
         while i <= self.json_data["System"]["Player Count"]:
+            usera = self.json_data["Players"][str(i)]
+            await self.bot.say(user.mention)
             bank.withdraw_credits(self.json_data["Players"][str(i)], self.json_data["System"]["Bet"])
             i += 1
             await self.bot.say("Money removed")
