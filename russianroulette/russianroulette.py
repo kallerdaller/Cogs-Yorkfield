@@ -9,7 +9,7 @@ class Mycog:
         
     @commands.command(pass_contect=True, aliases=["rr", "russian"])
     async def russianroulette(self, ctx, type):
-        """This does stuff!"""
+        """Type = start or join"""
         
         #Your code will go here
         user = ctx.message.author
