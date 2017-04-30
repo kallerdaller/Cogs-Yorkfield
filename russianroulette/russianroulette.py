@@ -35,7 +35,7 @@ def betAmount():
     try:
         bet = int(float(input("How much would you like to put on the line? $")))
     except:
-        await self.bot.say("Failed")
+        pass
         
 
 def check_folders():
