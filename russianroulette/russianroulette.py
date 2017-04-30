@@ -14,7 +14,7 @@ class Russianroulette:
         self.json_data = dataIO.load_json(self.file_path) 
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
-    async def russianroulette(self, ctx, type: ["start", "Start", "Join", "join"]):
+    async def russianroulette(self, ctx, type):
         """Type = start or join"""
         
         #Your code will go here
@@ -27,6 +27,8 @@ class Russianroulette:
                 await self.bot.say("Start")
         elif type.lower() == "join":
             await self.bot.say("Join")
+        else:
+            await self.bot.say(user.mention + "Type can only be start or join")
         
 
 def check_folders():
