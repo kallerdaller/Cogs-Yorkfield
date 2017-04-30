@@ -43,4 +43,7 @@ if not dataIO.is_valid_json(f):
     dataIO.save_json(f, system)
 
 def setup(bot):
-    bot.add_cog(Mycog(bot))
+    check_folders()
+    check_files()
+    n = Russianroulette(bot)
+    bot.add_cog(n)
