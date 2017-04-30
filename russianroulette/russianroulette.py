@@ -5,6 +5,8 @@ from .utils.dataIO import dataIO
 import time
 import asyncio
 
+client = discord.Client()
+
 class Russianroulette:
     """Russian Roulette"""
     
@@ -35,6 +37,7 @@ class Russianroulette:
             
     async def betAmount(self, user):
         await self.bot.say("How much would you like to put on the line: $")
+        @client.event
         bet = asynco self.bot.wait_for_message(timeout=60, author=user)
         if bet is int:
             bet = int(float(bet))
