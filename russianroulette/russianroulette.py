@@ -20,7 +20,7 @@ class Mycog:
         bank = self.bot.get_cog("Economy").bank
         if type.lower() == "start":
             await self.bot.say("Start")
-        elseif type.lower() == "join":
+        elif type.lower() == "join":
             await.self.bot.say("Join")
         
 
