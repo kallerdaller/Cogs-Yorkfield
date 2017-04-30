@@ -112,7 +112,7 @@ class Russianroulette:
                         return
                     elif answer.lower() == "y" or answer.lower() == "yes":
                         self.json_data["System"]["Player Count"] += 1
-                        self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
+                        self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user
                         f = "data/russianroulette/russianroulette.json"
                         dataIO.save_json(f, self.json_data)
                         await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"]))
