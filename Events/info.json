@@ -5,6 +5,6 @@
     "DESCRIPTION" : "All put forward a set amount of money and winner takes all",
     "DISABLED" : false,
     "NAME" : "Russian Rulette",
-    "TAGS" : ["yorkfield", "gambling", "economy"],
+    "TAGS" : ["yorkfield", "economy", "utils"],
     "HIDDEN" : false,
 }
