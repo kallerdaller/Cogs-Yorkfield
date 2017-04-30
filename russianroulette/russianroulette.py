@@ -30,7 +30,8 @@ class Russianroulette:
             elif self.json_data["System"]["Status"] == "Waiting":
                 if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
                     self.startGame(bank)
-                await self.bot.say("Game has been made, to join it type `*rr join`")
+                else:
+                    await self.bot.say("Game has been made, to join it type `*rr join`")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
