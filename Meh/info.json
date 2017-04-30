@@ -1,11 +1,9 @@
 {
     "AUTHOR" : "kaller",
-    "SHORT" : "Says meh",
-    "DESCRIPTION" : "Allows you to tag a user saying Meh",
+    "SHORT" : "Meh",
+    "DESCRIPTION" : "Successfully installed Meh, the command is [p]meh",
     "DISABLED" : false,
     "NAME" : "Meh",
-    "REQUIREMENTS" : [],
-    "TAGS" : ["yorkfield"],
-    "INSTALL_MSG" : "Thanks for installing (However this was made for Yorkfield)",
+    "TAGS" : ["yorkfield", "funny"],
     "HIDDEN" : false,
 }
