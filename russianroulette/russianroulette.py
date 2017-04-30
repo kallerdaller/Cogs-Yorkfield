@@ -27,14 +27,14 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.betAmount(user, bank)
-            else if self.json_data["System"]["Status"] == "Waiting":
+            elif self.json_data["System"]["Status"] == "Waiting":
                 await self.bot.say("Game has been made, to join it type `*rr join`")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
             if self.json_data["System"]["Status"] == "Waiting":
                 #await self.joinGame(user, bank)
-            else if self.json_data["System"]["Status"] == "Stopped":
+            elif self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("No game to join, type `*rr start` to create a game")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
