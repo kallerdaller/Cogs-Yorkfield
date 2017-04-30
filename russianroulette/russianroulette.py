@@ -38,7 +38,7 @@ class Russianroulette:
     async def betAmount(self, user):
         await self.bot.say("How much would you like to put on the line: $")
         @client.event
-        bet = asynco self.bot.wait_for_message(timeout=60, author=user)
+        bet = await self.bot.wait_for_message(timeout=60, author=user)
         if bet is int:
             bet = int(float(bet))
             await self.bot.say("Bet placed at $" + string(bet))
