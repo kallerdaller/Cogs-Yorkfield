@@ -130,7 +130,7 @@ class Russianroulette:
         while i <= self.json_data["System"]["Player Count"]:
             bank.withdraw_credits(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(i)]), self.json_data["System"]["Bet"])
             i += 1
-        while self.json_data["System"]["Player count"] > 1:
+        while self.json_data["System"]["Player Count"] > 1:
             await self.play(ctx, a)
             a += 1
         a = 1
