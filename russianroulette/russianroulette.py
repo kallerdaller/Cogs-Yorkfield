@@ -139,7 +139,7 @@ class Russianroulette:
             if self.json_data["Players"][str(b)] == "":
                 b += 1
             else:
-                winner = self.json_data["Players"][str(a)]
+                winner = self.json_data["Players"][str(b)]
         deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + self.json_data["System"]["Bet"] * totalPlayers)
             
