@@ -101,10 +101,13 @@ class Russianroulette:
                 if answer is None or answer.lower() == "n" or answer.lower() == "no":
                     await self.bot.say("Very well, you haven't been entered")
                     return
-                elif answer.lower() == "y" or answer.lower() == "yes"
+                elif answer.lower() == "y" or answer.lower() == "yes":
                     self.json_data["System"]["Player Count"] += 1
                     self.json_data["Players"][str(self.json_data["System"]["Player Count"])] = user.id
-                    await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"])
+                    f = "data/russianroulette/russianroulette.json"
+                    dataIO.save_json(f, self.json_data)
+                    await self.bot.say("You have been entered. You are in seat: " + str(self.json_data["System"]["Player Count"]))
+                    return
         else:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
