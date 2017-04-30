@@ -33,7 +33,7 @@ class Russianroulette:
         else:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
             
-    async def betAmount(self):
+    async def betAmount(self, user):
         await self.bot.say("How much would you like to put on the line: $")
         bet = await self.bot.wait_for_message(timeout=60, author=user, check=check)
         if bet is int:
