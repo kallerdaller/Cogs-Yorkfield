@@ -42,12 +42,7 @@ class Russianroulette:
         if bet is None:
             await self.bot.say("You didn't enter anything")
             return
-        try:
-            print(type(int(bet.content)))
-            print(bet.content)
-            bet = int(str(bet.content))
-        except TypeError:
-            pass
+        bet = int(str(bet.content))
         if bet is int:
             await self.bot.say("Bet placed at $" + string(bet))
         else:
