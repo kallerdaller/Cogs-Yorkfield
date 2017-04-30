@@ -153,9 +153,9 @@ class Russianroulette:
         await self.bot.say("They pull the trigger...")
         time.sleep(1)
         if randint(1, 20) >= 7:
-            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "you're still alive")
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + " you're still alive")
         else: 
-            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "shot their brains out")
+            await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + " shot their brains out")
             self.json_data["Players"][str((a%6)+1)] = ""
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
