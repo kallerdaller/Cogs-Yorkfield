@@ -43,7 +43,7 @@ class Russianroulette:
             await self.bot.say("You didn't enter anything")
             return
         try:
-            bet = int(float(str(bet)))
+            bet = int(str(bet))
         except:
             pass
         if bet is int:
