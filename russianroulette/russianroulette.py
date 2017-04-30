@@ -38,8 +38,22 @@ class Russianroulette:
                 await self.bot.say("No game to join, type `*rr start` to create a game")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
+        elif type.lower() == "stop":
+            if self.json_data["System"]["Status"] == "Stopped":
+                await self.bot.say("There is no game running to stop")
+            elif self.json_data["System"]["Status"] == "Running":
+                await self.bot.say("The game is running and can only be stopped when in the lobby waiting")
+            if user == self.json_data["System"]["Players"][0]:
+                self.json_data["System"]["Players"] = []
+                self.json_data["System"]["Player Count"] = 0
+                self.json_data["System"]["Status"] = "Stopped"
+                self.json_data["System"]["Bet"] = 0
+                f = "data/russianroulette/russianroulette.json"
+                dataIO.save_json(f, self.json_data)
+            else:
+                await self.bot.say("You must be the person who started the roulette and you must currently be waiting for people to join")
         else:
-            await self.bot.say(user.mention + "`This command only accepts 'start' or 'join'`")
+            await self.bot.say(user.mention + "`This command only accepts `start` `stop` or `join`")
             
     @client.event
     async def betAmount(self, user, bank):
@@ -56,10 +70,12 @@ class Russianroulette:
             if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
                     self.json_data["System"]["Bet"] = bet
+                    self.json_data["System"]["Players"].append(user)
+                    self.json_data["System"]["Player Count"] += 1
                     self.json_data["System"]["Status"] = "Waiting"
                     f = "data/russianroulette/russianroulette.json"
                     dataIO.save_json(f, self.json_data)
-                    await self.bot.say("Bet placed at $" + str(bet))
+                    await self.bot.say("Bet placed at $" + str(bet)"\nTo start the game you need atleast one another person to join with `*rr join`")
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
             else:
@@ -79,10 +95,7 @@ def check_folders():
         os.makedirs("data/russianroulette") 
 
 def check_files(): 
-    system = {"System": {"Pot": 0,            
-                         "Active": False,
-                         "Bet": 0,
-                         "Roulette Initial": False,
+    system = {"System": {"Bet": 0,
                          "Status": "Stopped",
                          "Player Count": 0},
               "Players": {}}
