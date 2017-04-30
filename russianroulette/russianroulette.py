@@ -39,7 +39,7 @@ class Russianroulette:
     async def betAmount(self, user):
         await self.bot.say("How much would you like to put on the line: $")
         bet = await self.bot.wait_for_message(timeout=30, author=user)
-        if not bet is str or not bet is int:
+        if bet is None:
             await self.bot.say("You didn't enter anything")
             return
         if bet is int:
