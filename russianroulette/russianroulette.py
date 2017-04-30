@@ -29,9 +29,9 @@ class Russianroulette:
                 await self.betAmount(user, bank)
             elif self.json_data["System"]["Status"] == "Waiting":
                 if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
-                    self.startGame(bank)
+                    await self.startGame(bank)
                 else:
-                    await self.bot.say("Game has been made, to join it type `*rr join`")
+                    await self.bot.say("Game has been made, to join it type `*rr join`. Only the creator of the roulette can start it and there must be more than 1 person")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
@@ -45,7 +45,7 @@ class Russianroulette:
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("There is no game running to stop")
             elif self.json_data["System"]["Status"] == "Running":
-                await self.bot.say("The game is running and can only be stopped when in the lobby waiting")
+                await self.bot.say("The game is running and can only be stopped when waiting in the lobby")
             if user.id == self.json_data["Players"]["1"]:
                 self.json_data["Players"]["1"] = ""
                 self.json_data["Players"]["2"] = ""
