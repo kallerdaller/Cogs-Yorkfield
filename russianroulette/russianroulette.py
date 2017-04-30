@@ -7,8 +7,8 @@ class Mycog:
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command(pass_contect=True, aliases=["RR", "Russian"])
-    async def RussianRoulette(self):
+    @commands.command(pass_contect=True, aliases=["rr", "russian"])
+    async def russianroulette(self):
         """This does stuff!"""
         
         #Your code will go here
