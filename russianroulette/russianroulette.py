@@ -45,7 +45,7 @@ class Russianroulette:
         try:
             print(message.content)
             bet = int(str(bet.content))
-        except:
+        except TypeError:
             pass
         if bet is int:
             await self.bot.say("Bet placed at $" + string(bet))
