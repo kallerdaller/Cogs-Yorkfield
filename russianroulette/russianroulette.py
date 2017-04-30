@@ -103,7 +103,7 @@ class Russianroulette:
                     answer = ""
                     answer = await self.bot.wait_for_message(timeout=10, author=user)
                     await self.bot.say(answer)
-                    answer = str(answer)
+                    answer = str(answer.content)
                     await self.bot.say(answer)
                     if answer is None or answer.lower() == "n" or answer.lower() == "no":
                         await self.bot.say("Very well, you haven't been entered")
