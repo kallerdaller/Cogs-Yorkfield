@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 from .utils.dataIO import dataIO
 
-class Mycog:
+class Russianroulette:
     """Russian Roulette"""
     
     def __init__(self, bot):
