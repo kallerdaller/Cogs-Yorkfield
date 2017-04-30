@@ -23,12 +23,19 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
+                betAmount()
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
             await self.bot.say("Join")
         else:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
+        
+def betAmount():
+    try:
+        bet = int(float(input("How much would you like to put on the line? $")))
+    except:
+        await self.bot.say("Failed")
         
 
 def check_folders():
@@ -39,7 +46,7 @@ def check_folders():
 def check_files(): 
     system = {"System": {"Pot": 0,            
                          "Active": False,
-                         "Start Bet": 0,
+                         "Bet": 0,
                          "Roulette Initial": False,
                          "Status": "Stopped",
                          "Player Count": 0},
