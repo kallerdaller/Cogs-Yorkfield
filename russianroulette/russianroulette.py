@@ -135,7 +135,7 @@ class Russianroulette:
             a += 1
         a = 1
         winner = ""
-        while winner = "":
+        while winner == "":
             if self.json_data["Players"][str(a)] == "":
                 a += 1
             else:
