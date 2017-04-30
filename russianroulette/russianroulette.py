@@ -14,7 +14,7 @@ class Russianroulette:
         self.json_data = dataIO.load_json(self.file_path) 
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
-    async def russianroulette(self, ctx, type):
+    async def russianroulette(self, ctx, type: ["start", "Start", "Join", "join"]):
         """Type = start or join"""
         
         #Your code will go here
