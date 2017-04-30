@@ -47,7 +47,10 @@ class Russianroulette:
         except ValueError:
             pass
         if isinstance(bet , int):
-            await self.bot.say("Bet placed at $" + str(bet))
+            if bank.get_balance(user) > bet:
+                await self.bot.say("Bet placed at $" + str(bet))
+            else:
+                await self.bot.say("You don't have enough to place a bet of $" + str(bet) + "You only have $" + str(bank.get_balance(user)))
         else:
             await self.bot.say("You must enter a number")
             await self.betAmount(user)
