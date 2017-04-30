@@ -57,6 +57,7 @@ class Russianroulette:
                 if bank.get_balance(user) > bet:
                     self.json_data["System"]["Bet"] = bet
                     self.json_data["System"]["Status"] = "Waiting"
+                    f = "data/russianroulette/russianroulette.json"
                     dataIO.save_json(f, json_data)
                     await self.bot.say("Bet placed at $" + str(bet))
                 else:
