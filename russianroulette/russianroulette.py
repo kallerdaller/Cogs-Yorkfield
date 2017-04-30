@@ -95,7 +95,7 @@ class Russianroulette:
         if self.json_data["System"]["Player Count"] == 6:
             await self.bot.say("The game is full, please wait until it has finished to join")
         elif bank.account_exists(user):
-            if user == self.json_data["Players"]["1"] or user == self.json_data["Players"]["2"] or user == self.json_data["Players"]["3"] or user == self.json_data["Players"]["4"] or user == self.json_data["Players"]["5"] or user == self.json_data["Players"]["6"]:
+            if user.id == self.json_data["Players"]["1"] or user.id == self.json_data["Players"]["2"] or user.id == self.json_data["Players"]["3"] or user.id == self.json_data["Players"]["4"] or user.id == self.json_data["Players"]["5"] or user.id == self.json_data["Players"]["6"]:
                 await self.bot.say("You're alreadyt entered")
             else:
                 if bank.get_balance(user) > bet:
