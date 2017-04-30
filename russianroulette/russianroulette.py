@@ -25,7 +25,7 @@ class Russianroulette:
         if type.lower() == "start":
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("Bet")
-                await self.betAmount()
+                await self.betAmount(user)
             else:
                 await self.bot.say("Start")
         elif type.lower() == "join":
@@ -41,7 +41,7 @@ class Russianroulette:
             await self.bot.say("Bet placed at $" + string(bet))
         else:
             await self.bot.say("You must enter a number")
-            await self.betAmount()
+            await self.betAmount(user)
             
 
 def check_folders():
