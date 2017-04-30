@@ -32,12 +32,10 @@ class Russianroulette:
             await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
         
 def betAmount():
-    try:
-        await self.send_message(message.channel, 'Say hello')
-        bet = await self.wait_for_message(author=message.author, content='hello')
-        await self.send_message(message.channel, 'Hello.')
-    except:
-        pass
+    async @client.event
+    await client.send_message(message.channel, 'say hello')
+    msg = await client.wait_for_message(author=message.author, content='hello')
+    await client.send_message(message.channel, 'Hello.')
         
 
 def check_folders():
