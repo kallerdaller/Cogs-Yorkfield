@@ -69,6 +69,7 @@ class Russianroulette:
         if isinstance(bet , int):
             if bank.account_exists(user):
                 if bank.get_balance(user) > bet:
+                    await self.bot.say(self.json_data)
                     self.json_data["System"]["Bet"] = bet
                     self.json_data["System"]["Players"].append(user)
                     self.json_data["System"]["Player Count"] += 1
