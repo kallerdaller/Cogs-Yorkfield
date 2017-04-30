@@ -28,6 +28,8 @@ class Russianroulette:
             if self.json_data["System"]["Status"] == "Stopped":
                 await self.betAmount(user, bank)
             elif self.json_data["System"]["Status"] == "Waiting":
+                if user == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
+                    self.startGame(bank)
                 await self.bot.say("Game has been made, to join it type `*rr join`")
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
@@ -59,7 +61,7 @@ class Russianroulette:
             else:
                 await self.bot.say("You must be the person who started the roulette and you must currently be waiting for people to join")
         else:
-            await self.bot.say(user.mention + "`This command only accepts `start` `stop` or `join`")
+            await self.bot.say(user.mention + "This command only accepts `start` `stop` or `join`")
             
     @client.event
     async def betAmount(self, user, bank):
@@ -104,7 +106,6 @@ class Russianroulette:
                     answer = ""
                     answer = await self.bot.wait_for_message(timeout=10, author=user)
                     answer = str(answer.content)
-                    await self.bot.say(answer)
                     if answer is None or answer.lower() == "n" or answer.lower() == "no":
                         await self.bot.say("Very well, you haven't been entered")
                         return
@@ -118,6 +119,13 @@ class Russianroulette:
         else:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
+        
+    async def startGame(self, bank):
+        i = 1
+        await self.bot.say("Game is starting")
+        while i <= self.json_data["System"]["Player Count"]:
+            bank.withdrawl_credits(self.json_data["Players"][str(i)], self.json_data["System"]["Bet"])
+        await self.bot.say("Money removed")
             
             
 
