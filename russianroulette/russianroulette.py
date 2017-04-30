@@ -145,10 +145,10 @@ class Russianroulette:
             
         
     async def play(self, ctx, a):
-        if self.json_data["Players"][str((a%6)=1)] == "":
+        if self.json_data["Players"][str((a%6)+1)] == "":
             return
         time.wait(2)
-        await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(i)]).mention + " picks up the gun...")
+        await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(a)]).mention + " picks up the gun...")
         time.wait(2)
         await self.bot.say("They pull the trigger...")
         time.wait(1)
@@ -156,7 +156,7 @@ class Russianroulette:
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "you're still alive")
         else: 
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%6)+1)]).mention + "shot their brains out")
-            self.json_data["Players"][str((a%6)=1)] = ""
+            self.json_data["Players"][str((a%6)+1)] = ""
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
             dataIO.save_json(f, system)
