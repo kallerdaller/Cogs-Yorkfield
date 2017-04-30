@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "kaller",
+    "SHORT" : "Event",
+    "INSTALL_MSG" : "Successfully installed events, there are multiple commands: [p]em/eventmake [p]ev/eventview [p]ej/eventjoin and [p]ed/eventdelete",
+    "DESCRIPTION" : "All put forward a set amount of money and winner takes all",
+    "DISABLED" : false,
+    "NAME" : "Russian Rulette",
+    "TAGS" : ["yorkfield", "gambling", "economy"],
+    "HIDDEN" : false,
+}
