@@ -159,7 +159,7 @@ class Russianroulette:
             self.json_data["Players"][str((a%6)+1)] = ""
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
-            dataIO.save_json(f, system)
+            dataIO.save_json(f, self.json_data)
             
 
 def check_folders():
