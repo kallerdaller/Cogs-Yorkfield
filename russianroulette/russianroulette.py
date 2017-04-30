@@ -44,7 +44,7 @@ class Russianroulette:
             return
         try:
             bet = int(float(str(bet)))
-        except TypeError:
+        except:
             pass
         if bet is int:
             await self.bot.say("Bet placed at $" + string(bet))
