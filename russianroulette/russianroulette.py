@@ -133,11 +133,11 @@ class Russianroulette:
         while self.json_data["System"]["Player Count"] > 1:
             await self.play(ctx, a)
             a += 1
-        a = 1
+        b = 1
         winner = ""
         while winner == "":
-            if self.json_data["Players"][str(a)] == "":
-                a += 1
+            if self.json_data["Players"][str(b)] == "":
+                b += 1
             else:
                 winner = self.json_data["Players"][str(a)]
         deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
