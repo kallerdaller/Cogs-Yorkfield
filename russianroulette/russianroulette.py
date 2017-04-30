@@ -145,7 +145,10 @@ class Russianroulette:
             
         
     async def play(self, ctx, a):
-        if self.json_data["Players"][str((a%7))] == "":
+        try:
+            if self.json_data["Players"][str((a%7))] == "":
+            return
+        except KeyError:
             return
         time.sleep(2)
         await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str(a%7)]).mention + " picks up the gun...")
