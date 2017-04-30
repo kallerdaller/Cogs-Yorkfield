@@ -75,7 +75,7 @@ class Russianroulette:
                     self.json_data["System"]["Status"] = "Waiting"
                     f = "data/russianroulette/russianroulette.json"
                     dataIO.save_json(f, self.json_data)
-                    await self.bot.say("Bet placed at $" + str(bet)"\nTo start the game you need atleast one another person to join with `*rr join`")
+                    await self.bot.say("Bet placed at $" + str(bet) + "\nTo start the game you need atleast one another person to join with `*rr join`")
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
             else:
