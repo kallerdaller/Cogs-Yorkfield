@@ -39,7 +39,7 @@ class Russianroulette:
             else:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         else:
-            await self.bot.say(user.mention + " This command only accepts 'start' or 'join'")
+            await self.bot.say(user.mention + "`This command only accepts 'start' or 'join'`")
             
     @client.event
     async def betAmount(self, user, bank):
