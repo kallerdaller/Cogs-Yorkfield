@@ -107,6 +107,7 @@ class EventBets:
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Day"] = day
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Hour"] = hour
         self.json_data["Events"][str(numberofcurrentevents+1)]["Users"] = {}
+        self.json_data["Events"][str(numberofcurrentevents+1)]["CurrentUsers"] = 0
         c = 0
         while c < len(outcome):
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
@@ -128,18 +129,20 @@ class EventBets:
             return
         numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
         a = 1
+        if numberofcurrentevents == 0:
+            await self.bot.say("There are no events running right now, sorry")
+            return
         await self.bot.say("Which event would you like to be on?: ")
         while a <= numberofcurrentevents:
             await self.bot.say(str(a) + ": " + self.json_data["Events"][str(a)]["Name"])
             a += 1
         await self.bot.say("Enter the number of the event")
         event = await self.bot.wait_for_message(timeout = 30, author = user)
-        event = event.content
         if event is None:
             await self.bot.say("You didn't enter anything. Bet cancelled")
             return
         try:
-            event = int(event)
+            event = int(event.content)
         except ValueError:
             await self.bot.say("You need to enter a number. Bet cancelled")
             return
@@ -158,7 +161,7 @@ class EventBets:
             await self.bot.say("You didn't enter anything. Bet cancelled")
             return
         try:
-            outcome = int(outcome)
+            outcome = int(outcome.content)
         except ValueError:
             await self.bot.say("You need to enter a number. Bet cancelled")
             return
@@ -168,7 +171,7 @@ class EventBets:
             await self.bot.say("You didn't enter anything. Bet cancelled")
             return
         try:
-            bet = int(bet)
+            bet = int(bet.content)
         except ValueError:
             await self.bot.say("You need to enter a number. Bet cancelled")
             return
@@ -176,11 +179,12 @@ class EventBets:
             await self.bot.say("You don't have enough money. Bet cancelled")
             return
         bank.withdraw_credits(user, bet)
-        numberofcurrentusers = self.json_data["Events"]["CurrentUsers"]
-        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)] = {}
-        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["ID"] = str(user.id)
-        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["Bet"] = bet
-        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["Choice"] = outcome
+        numberofcurrentusers = self.json_data["Events"][str(event)]["CurrentUsers"]
+        self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)] = {}
+        self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["ID"] = str(user.id)
+        self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["Bet"] = bet
+        self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["Choice"] = outcome
+        self.json_data["Events"][str(event)]["CurrentUsers"] = self.json_data["Events"][str(event)]["CurrentUsers"]+1
         dataIO.save_json(self.file_path, self.json_data)
         
                    
@@ -192,6 +196,7 @@ def check_folders():
         
 def check_files(): 
     system = {"Events": {"1": {"Name": "",
+                               "CurrentUsers": 0,
                                "Multiplier": 1,
                                "Users": { "1": {"Bet": 0,
                                                 "Choice": ""},
@@ -200,7 +205,6 @@ def check_files():
                                         "Day": 0,
                                         "Month": 0},
                                "Outcomes": {"1": ""}},
-                        "CurrentUsers": 0,
                         "CurrentEvents": 0}}
                          
     f = "data/irlbetting/irlbetting.json"
