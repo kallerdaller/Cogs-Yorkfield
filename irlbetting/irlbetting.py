@@ -33,7 +33,7 @@ class EventBets:
         await self.bot.say("Event name: \n" + eventname)
         await self.bot.say("What is the possible outcomes of the event? You must have atleast 2. To stop inputting outcomes simply type `.`")
         a = 1
-        mesage = ""
+        message = ""
         while not message == ".":
             outcome[a] = await self.bot.wait_for_message(timeout=30, author=user)
             outcome[a] = str(outcome[a].content)
