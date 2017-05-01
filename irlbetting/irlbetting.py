@@ -97,6 +97,8 @@ class EventBets:
             await self.bot.say("You have to enter a number. Event cancelled")
             return
         await self.bot.say("The event happens at " + str(hour) + ":00 on " + str(month) + "/" + str(day))
+        #self.file_path
+        await self.bot.say(str(len(self.json_data["Events"])))
         
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
