@@ -49,8 +49,8 @@ class EventBets:
                 message = outcome[a]
             a += 1
         await self.bot.say("Outcomes: ")
-        i = 1
-        while i < a:
+        i = 0
+        while i < a-1:
             await self.bot.say(outcome[i])
             i += 1
         
