@@ -36,6 +36,7 @@ class EventBets:
         outcome = []
         message = ""
         while not message == ".":
+            await self.bot.say(str(a+1) + ": ")
             outcome.append(await self.bot.wait_for_message(timeout=30, author=user))
             outcome[a] = str(outcome[a].content)
             if outcome[a] is None:
@@ -50,7 +51,7 @@ class EventBets:
         await self.bot.say("Outcomes: ")
         i = 1
         while i < a:
-            await self.bot.sat(outcomes[i])
+            await self.bot.say(outcomes[i])
             i += 1
         
 
