@@ -150,7 +150,7 @@ class EventBets:
             await self.bot.say("That is not a valid event number. Bet cancelled")
             return
         i = 1
-        while i < self.json_data["Events"]["CurrentUsers"]:
+        while i < self.json_data["Events"][str(event)]["CurrentUsers"]:
             if user.id == discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)][str(numberofcurrentusers+1)][str(i)]):
                 await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
                 return
@@ -199,6 +199,7 @@ def check_files():
                                "CurrentUsers": 0,
                                "Multiplier": 1,
                                "Users": { "1": {"Bet": 0,
+                                                "ID": "",
                                                 "Choice": ""},
                                         },
                                "Date": {"Hour": 0,
