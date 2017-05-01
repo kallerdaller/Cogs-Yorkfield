@@ -132,7 +132,7 @@ class EventBets:
         if numberofcurrentevents == 0:
             await self.bot.say("There are no events running right now, sorry")
             return
-        await self.bot.say("Which event would you like to be on?: ")
+        await self.bot.say("Which event would you like to bet on?: ")
         while a <= numberofcurrentevents:
             await self.bot.say(str(a) + ": " + self.json_data["Events"][str(a)]["Name"])
             a += 1
@@ -155,7 +155,12 @@ class EventBets:
                 await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
                 return
             i += 1
-        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". Enter the number of the outcome you would like to bet on: ")
+        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". \nThe outcomes for this event are:")
+        a = 1
+        while a <= len(self.json_data["Events"][str(event)]["Outcomes"]):
+            await self.bot.say(str(a) + ": " + self.json_data["Events"][str(event)]["Outcomes"][str(a)])
+            a += 1
+        await self.bot.say("Enter the number of the outcome you would like to bet on: ")
         outcome = await self.bot.wait_for_message(timeout = 30, author = user)
         if outcome is None:
             await self.bot.say("You didn't enter anything. Bet cancelled")
