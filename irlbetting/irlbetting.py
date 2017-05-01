@@ -15,7 +15,7 @@ class EventBets:
         #Your code will go here
         user = ctx.message.author
         await self.bot.say("Event name?")
-        print(user.roles)
+        print(user.roles.id)
 
 def setup(bot):
     n = EventBets(bot)
