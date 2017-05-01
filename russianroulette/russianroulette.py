@@ -87,6 +87,7 @@ class Russianroulette:
                     f = "data/russianroulette/russianroulette.json"
                     dataIO.save_json(f, self.json_data)
                     await self.bot.say("Bet placed at $" + str(bet) + "\nTo start the game you need atleast one another person to join with `*rr join`")
+                    async self.timeOut()
                 else:
                     await self.bot.say("You don't have enough to place a bet of $" + str(bet) + " You only have $" + str(bank.get_balance(user)))
             else:
@@ -166,6 +167,24 @@ class Russianroulette:
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
             dataIO.save_json(f, self.json_data)
+    
+    async def timeOut(self):
+        if self.json_data["System"]["Status"] == "Waiting"
+            asyncio.sleep(120)
+            if self.json_data["System"]["Status"] == "Waiting":
+                self.json_data["Players"]["1"] = ""
+                self.json_data["Players"]["2"] = ""
+                self.json_data["Players"]["3"] = ""
+                self.json_data["Players"]["4"] = ""
+                self.json_data["Players"]["5"] = ""
+                self.json_data["Players"]["6"] = ""
+                self.json_data["System"]["Player Count"] = 0
+                self.json_data["System"]["Status"] = "Stopped"
+                self.json_data["System"]["Bet"] = 0
+                f = "data/russianroulette/russianroulette.json"
+                dataIO.save_json(f, self.json_data)
+                await self.bot.say("The game wasn't started within 2 minutes and has been cancelled")
+                return
             
 
 def check_folders():
