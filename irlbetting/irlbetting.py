@@ -99,7 +99,16 @@ class EventBets:
             return
         await self.bot.say("The event happens at " + str(hour) + ":00 on " + str(month) + "/" + str(day))
         #self.file_path
-        await self.bot.say(str(len(self.json_data["Events"])))
+        numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Name"] = eventname
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Multiplier"] = payoutM
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Month"] = month
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Day"] = day
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Hour"] = hour
+        c = 0
+        while c < len(outcomes):
+            self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"][str(c+1)] = outcome[c]
+            c += 1
         
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
@@ -116,7 +125,8 @@ def check_files():
                                "Date": {"Hour": 0,
                                         "Day": 0,
                                         "Month": 0},
-                               "Outcomes": {"1": ""}}}}
+                               "Outcomes": {"1": ""}},
+                        "CurrentEvents": 0}}
                          
     f = "data/irlbetting/irlbetting.json"
     if not dataIO.is_valid_json(f):
