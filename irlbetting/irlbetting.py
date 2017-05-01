@@ -4,6 +4,7 @@ from discord.permissions import Permissions
 from .utils import checks
 import asyncio
 from .utils.dataIO import dataIO
+import os
 
 class EventBets:
     """Create an event which people can bet on"""
