@@ -151,7 +151,7 @@ class EventBets:
             return
         i = 1
         while i < self.json_data["Events"][str(event)]["CurrentUsers"]:
-            if user.id == discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)]["Users"][str(i)]):
+            if user.id == discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)]["Users"][str(i)]["ID"]):
                 await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
                 return
             i += 1
