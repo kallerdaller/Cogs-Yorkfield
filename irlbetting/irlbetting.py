@@ -109,6 +109,7 @@ class EventBets:
         self.json_data["Events"][str(numberofcurrentevents+1)]["Users"] = {}
         self.json_data["Events"][str(numberofcurrentevents+1)]["CurrentUsers"] = 0
         c = 0
+        print(outcome)
         while c < len(outcome):
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"][str(c+1)] = outcome[c]
@@ -156,10 +157,10 @@ class EventBets:
                 return
             i += 1
         await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". \nThe outcomes for this event are:")
-        a = 1
-        while a <= len(self.json_data["Events"][str(event)]["Outcomes"]):
-            await self.bot.say(str(a) + ": " + self.json_data["Events"][str(event)]["Outcomes"][str(a)])
-            a += 1
+        d = 1
+        while d <= len(self.json_data["Events"][str(event)]["Outcomes"]):
+            await self.bot.say(str(d) + ": " + self.json_data["Events"][str(event)]["Outcomes"][str(d)])
+            d += 1
         await self.bot.say("Enter the number of the outcome you would like to bet on: ")
         outcome = await self.bot.wait_for_message(timeout = 30, author = user)
         if outcome is None:
