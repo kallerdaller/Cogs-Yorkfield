@@ -16,7 +16,7 @@ class EventBets:
         self.file_path = "data/irlbetting/irlbetting.json"
         self.json_data = dataIO.load_json(self.file_path) 
 
-    @commands.command(pass_context=True, aliases=["ce"])
+    @commands.command(pass_context=True, aliases=["ce", "event create"])
     @checks.admin_or_permissions(manage_server=True)
     @client.event
     async def createevent(self, ctx):
@@ -114,6 +114,13 @@ class EventBets:
             c += 1
         self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"]+1
         dataIO.save_json(self.file_path, self.json_data)
+        
+        
+    @commands.command(pass_context=True, aliases=["be", "event bet"])
+    @client.event
+    async def betevent(self, ctx):
+        """Create event"""
+        
         
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
