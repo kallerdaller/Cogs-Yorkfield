@@ -38,6 +38,7 @@ class Russianroulette:
                 await self.bot.say("Game is in progress, please wait until it's finished")
         elif type.lower() == "join":
             if self.json_data["System"]["Status"] == "Waiting":
+                await self.bot.say("1")
                 await self.joinGame(user, bank)
             elif self.json_data["System"]["Status"] == "Stopped":
                 await self.bot.say("No game to join, type `*rr start` to create a game")
@@ -97,6 +98,7 @@ class Russianroulette:
             await self.betAmount(user, bank)
     
     async def joinGame(self, user, bank):
+        await self.bot.say("1")
         bet = self.json_data["System"]["Bet"]
         if self.json_data["System"]["Player Count"] == 6:
             await self.bot.say("The game is full, please wait until it has finished to join")
