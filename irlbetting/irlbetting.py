@@ -36,23 +36,15 @@ def check_folders():
 
         
 def check_files(): 
-    system = {"Events": {,
-        "1": {"Name",
-              "Multiplier",
-              "Users": {, 
-                        "1": {,
-                            "Bet",
-                              "Choice"},
-                       },
-              "Date": {,
-                       "Hour",
-                       "Day",
-                       "Month"},
-              "Outcomes": {,
-                           "1"},
-             }}},
-                         
-                         
+    system = {"Events": {"1": {"Name": "",
+                               "Multiplier": 1,
+                               "Users": { "1": {"Bet": 0,
+                                                "Choice": ""},
+                                        },
+                               "Date": {"Hour": 0,
+                                        "Day": 0,
+                                        "Month": 0},
+                               "Outcomes": {"1": ""}}}}
                          
     f = "data/irlbetting/irlbetting.json"
     if not dataIO.is_valid_json(f):
