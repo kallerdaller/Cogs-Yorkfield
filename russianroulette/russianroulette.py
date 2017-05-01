@@ -179,7 +179,7 @@ class Russianroulette:
             dataIO.save_json(f, self.json_data)
     
     async def timeOut(self):
-        if self.json_data["System"]["Status"] == "Waiting"
+        if self.json_data["System"]["Status"] == "Waiting":
             asyncio.sleep(120)
             if self.json_data["System"]["Status"] == "Waiting":
                 self.json_data["Players"]["1"] = ""
