@@ -202,6 +202,7 @@ def check_folders():
         print("Creating data/russianroulette floder...")  
         os.makedirs("data/russianroulette") 
 
+        
 def check_files(): 
     system = {"System": {"Bet": 0,
                          "Status": "Stopped",
