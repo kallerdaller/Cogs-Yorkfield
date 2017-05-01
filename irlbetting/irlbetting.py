@@ -53,7 +53,16 @@ class EventBets:
         while i < a-1:
             await self.bot.say(outcome[i])
             i += 1
+        await self.bot.say("What should the payout multiplier be?")
+        payoutM = await self.bot.wait_for_message(timeout=30, author=user)
+        try:
+            payoutM = int(payoutM.content)
+        except ValueError:
+            await self.bot.say("You must enter a number. Event cancelled")
+        if payoutM is None:
+            await self.bot.say("You didn't enter anything. Event cancelled")
         
+            
 
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
