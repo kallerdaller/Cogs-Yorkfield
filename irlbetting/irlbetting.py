@@ -170,7 +170,7 @@ class EventBets:
         except ValueError:
             await self.bot.say("You need to enter a number. Bet cancelled")
             return
-        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)][str(outcome)] + ". You have $" + str(bank.get_balance(user)) + ". How much would you like to bet?")
+        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Outcomes"][str(outcome)] + ". You have $" + str(bank.get_balance(user)) + ". How much would you like to bet?")
         bet = await self.bot.wait_for_message(timeout = 30, author = user)
         if bet is None:
             await self.bot.say("You didn't enter anything. Bet cancelled")
