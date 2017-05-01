@@ -128,11 +128,62 @@ class EventBets:
             return
         numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
         a = 1
+        await self.bot.say("Which event would you like to be on?: ")
         while a <= numberofcurrentevents:
-            await self.bot.say(str(a) + ": " + self.json_data["Events"][str(numberofcurrentevents)]["Name"])
+            await self.bot.say(str(a) + ": " + self.json_data["Events"][str(a)]["Name"])
             a += 1
+        await self.bot.say("Enter the number of the event")
+        event = await self.bot.wait_for_message(timeout = 30, author = user)
+        event = event.content
+        if event is None:
+            await self.bot.say("You didn't enter anything. Bet cancelled")
+            return
+        try:
+            event = int(event)
+        except ValueError:
+            await self.bot.say("You need to enter a number. Bet cancelled")
+            return
+        if event > numberofcurrentevents:
+            await self.bot.say("That is not a valid event number. Bet cancelled")
+            return
+        i = 1
+        while i < self.json_data["Events"]["CurrentUsers"]:
+            if user.id == discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)][str(numberofcurrentusers+1)][str(i)]):
+                await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
+                return
+            i += 1
+        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". Enter the number of the outcome you would like to bet on: ")
+        outcome = await self.bot.wait_for_message(timeout = 30, author = user)
+        if outcome is None:
+            await self.bot.say("You didn't enter anything. Bet cancelled")
+            return
+        try:
+            outcome = int(outcome)
+        except ValueError:
+            await self.bot.say("You need to enter a number. Bet cancelled")
+            return
+        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)][str(outcome)] + ". You have $" + str(bank.get_balance(user)) + ". How much would you like to bet?")
+        bet = await self.bot.wait_for_message(timeout = 30, author = user)
+        if bet is None:
+            await self.bot.say("You didn't enter anything. Bet cancelled")
+            return
+        try:
+            bet = int(bet)
+        except ValueError:
+            await self.bot.say("You need to enter a number. Bet cancelled")
+            return
+        if bet > bank.get_balance(user):
+            await self.bot.say("You don't have enough money. Bet cancelled")
+            return
+        bank.withdraw_credits(user, bet)
+        numberofcurrentusers = self.json_data["Events"]["CurrentUsers"]
+        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)] = {}
+        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["ID"] = str(user.id)
+        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["Bet"] = bet
+        self.json_data["Events"][str(event)][str(numberofcurrentusers+1)]["Choice"] = outcome
+        dataIO.save_json(self.file_path, self.json_data)
         
-        
+                   
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
@@ -149,6 +200,7 @@ def check_files():
                                         "Day": 0,
                                         "Month": 0},
                                "Outcomes": {"1": ""}},
+                        "CurrentUsers": 0,
                         "CurrentEvents": 0}}
                          
     f = "data/irlbetting/irlbetting.json"
