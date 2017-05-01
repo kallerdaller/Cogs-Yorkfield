@@ -146,7 +146,17 @@ class Russianroulette:
                 winner = self.json_data["Players"][str(b)]
         bank.deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + str(self.json_data["System"]["Bet"] * totalPlayers))
-            
+        self.json_data["Players"]["1"] = ""
+        self.json_data["Players"]["2"] = ""
+        self.json_data["Players"]["3"] = ""
+        self.json_data["Players"]["4"] = ""
+        self.json_data["Players"]["5"] = ""
+        self.json_data["Players"]["6"] = ""
+        self.json_data["System"]["Player Count"] = 0
+        self.json_data["System"]["Status"] = "Stopped"
+        self.json_data["System"]["Bet"] = 0
+        f = "data/russianroulette/russianroulette.json"
+        dataIO.save_json(f, self.json_data)  
         
     async def play(self, ctx, a):
         try:
