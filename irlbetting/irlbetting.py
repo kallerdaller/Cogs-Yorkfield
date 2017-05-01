@@ -106,6 +106,7 @@ class EventBets:
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Month"] = month
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Day"] = day
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Hour"] = hour
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Users"] = {}
         c = 0
         while c < len(outcome):
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
