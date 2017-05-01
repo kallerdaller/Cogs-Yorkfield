@@ -191,6 +191,7 @@ class EventBets:
         self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["Choice"] = outcome
         self.json_data["Events"][str(event)]["CurrentUsers"] = self.json_data["Events"][str(event)]["CurrentUsers"]+1
         dataIO.save_json(self.file_path, self.json_data)
+        await self.bot.say("You have placed $" + str(bet) + " on " + self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["Choice"])
         
                    
 def check_folders():
