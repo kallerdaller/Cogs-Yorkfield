@@ -180,7 +180,7 @@ class Russianroulette:
     
     async def timeOut(self):
         if self.json_data["System"]["Status"] == "Waiting":
-            asyncio.sleep(120)
+            await asyncio.sleep(120)
             if self.json_data["System"]["Status"] == "Waiting":
                 self.json_data["Players"]["1"] = ""
                 self.json_data["Players"]["2"] = ""
