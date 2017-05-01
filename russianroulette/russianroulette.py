@@ -173,7 +173,7 @@ class Russianroulette:
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " you're still alive")
         else: 
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " shot their brains out")
-            self.json_data["Players"][str((a%6))] = ""
+            self.json_data["Players"][str((a%7))] = ""
             self.json_data["System"]["Player Count"] += -1
             f = "data/russianroulette/russianroulette.json"
             dataIO.save_json(f, self.json_data)
