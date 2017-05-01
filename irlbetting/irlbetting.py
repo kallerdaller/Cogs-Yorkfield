@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.permissions import Permissions
+from .utils import checks
 
 class EventBets:
     """Create an event which people can bet on"""
