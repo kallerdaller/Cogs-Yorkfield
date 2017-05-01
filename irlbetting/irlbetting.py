@@ -122,7 +122,7 @@ class EventBets:
         """Bet on event"""
         
         user = ctx.message.author
-        bank = bot.get_cog('Economy').bank
+        bank = self.bot.get_cog('Economy').bank
         if not bank.account_exists(user):
             await self.bot.say("You don't have a bank account so you can't bet on events. Do `*bank register` to make an account")
             return
