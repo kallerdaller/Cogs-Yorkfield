@@ -121,6 +121,7 @@ class Russianroulette:
                         return
                 else:
                     await self.bot.sat("You don't have enough money. You have $" + str(bank.get_balance(user)) + " The bet is set at $" + str(bet))
+                    return
         else:
             await self.bot.say("You don't have a bank account. Make one with `*bank register`")
             return
