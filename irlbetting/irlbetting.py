@@ -98,7 +98,6 @@ class EventBets:
             await self.bot.say("You have to enter a number. Event cancelled")
             return
         await self.bot.say("The event happens at " + str(hour) + ":00 on " + str(month) + "/" + str(day))
-        #self.file_path
         numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
         self.json_data["Events"][str(numberofcurrentevents+1)]["Name"] = eventname
         self.json_data["Events"][str(numberofcurrentevents+1)]["Multiplier"] = payoutM
@@ -109,6 +108,7 @@ class EventBets:
         while c < len(outcomes):
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"][str(c+1)] = outcome[c]
             c += 1
+        dataIO.save_json(self.file_path, self.json_data)
         
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
