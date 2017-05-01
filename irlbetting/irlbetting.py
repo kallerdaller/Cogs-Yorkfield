@@ -8,8 +8,8 @@ class EventBets:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context = True, aliases=["be"])
-    async def betevent(self):
+    @commands.command(pass_context=True, aliases=["be"])
+    async def betevent(self, ctx):
         """Create event"""
 
         #Your code will go here
