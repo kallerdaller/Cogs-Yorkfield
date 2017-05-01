@@ -16,7 +16,7 @@ class EventBets:
         self.file_path = "data/irlbetting/irlbetting.json"
         self.json_data = dataIO.load_json(self.file_path) 
 
-    @commands.command(pass_context=True, aliases=["ce", "event create"])
+    @commands.command(pass_context=True, aliases=["ce", "eventcreate"])
     @checks.admin_or_permissions(manage_server=True)
     @client.event
     async def createevent(self, ctx):
@@ -116,10 +116,20 @@ class EventBets:
         dataIO.save_json(self.file_path, self.json_data)
         
         
-    @commands.command(pass_context=True, aliases=["be", "event bet"])
+    @commands.command(pass_context=True, aliases=["be", "eventbet"])
     @client.event
     async def betevent(self, ctx):
-        """Create event"""
+        """Bet on event"""
+        
+        user = ctx.message.author
+        bank = bot.get_cog('Economy').bank
+        if not bank.account_exists(user):
+            await self.bot.say("You don't have a bank account so you can't bet on events. Do `*bank register` to make an account")
+            return
+        numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
+        a = 1
+        while a <= numberofcurrentevents:
+            await self.bot.say(str(a) + ": " + self.json_data["Events"][str(numberofcurrentevents)]["Name"])
         
         
 def check_folders():
