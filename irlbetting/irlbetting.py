@@ -51,7 +51,7 @@ class EventBets:
         await self.bot.say("Outcomes: ")
         i = 1
         while i < a:
-            await self.bot.say(outcomes[i])
+            await self.bot.say(outcome[i])
             i += 1
         
 
