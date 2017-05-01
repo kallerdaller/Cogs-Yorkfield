@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-class Mycog:
-    """My custom cog that does stuff!"""
+class EventBets:
+    """Create an event which people can bet on"""
 
     def __init__(self, bot):
         self.bot = bot
