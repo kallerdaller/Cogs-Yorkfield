@@ -49,6 +49,7 @@ class EventBets:
                 message = outcome[a]
             a += 1
         if len(outcome) < 2:
+            await self.bot.say("You need atleast 2 outcomes. Event cancelled")
             return
         await self.bot.say("Outcomes: ")
         i = 0
