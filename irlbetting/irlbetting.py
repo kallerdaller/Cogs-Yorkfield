@@ -44,8 +44,8 @@ class EventBets:
                 else:
                     await self.bot.say("You didn't enter anything. Event cancelled")
                     return
-            outcome[a] = str(outcome[a].content)
             else:
+                outcome[a] = str(outcome[a].content)
                 message = outcome[a]
             a += 1
         if len(outcome) < 2:
