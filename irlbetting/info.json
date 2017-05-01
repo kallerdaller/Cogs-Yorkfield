@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "kaller",
+    "SHORT" : "Betting",
+    "INSTALL_MSG" : "Successfully installed Event Bets, the command is `[p]be` or `[p]betevent`",
+    "DESCRIPTION" : "Gives you a list of events which you can bet on",
+    "DISABLED" : false,
+    "NAME" : "Real event betting",
+    "TAGS" : ["yorkfield", "gambling", "economy"],
+    "HIDDEN" : false,
+}
