@@ -53,5 +53,7 @@ def check_files():
         
         
 def setup(bot):
+    check_folders()
+    check_files()
     n = EventBets(bot)
     bot.add_cog(n)
