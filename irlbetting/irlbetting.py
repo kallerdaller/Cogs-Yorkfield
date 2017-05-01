@@ -72,7 +72,7 @@ class EventBets:
             await self.bot.say("You didn't enter anything. Event cancelled")
             return
         try:
-            month = int(month.contents)
+            month = int(month.content)
         except ValueError:
             await self.bot.say("You have to enter a number. Event cancelled")
             return
