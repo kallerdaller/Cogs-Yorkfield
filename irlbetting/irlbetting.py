@@ -6,6 +6,8 @@ import asyncio
 from .utils.dataIO import dataIO
 import os
 
+client = discord.Client()
+
 class EventBets:
     """Create an event which people can bet on"""
 
@@ -16,18 +18,39 @@ class EventBets:
 
     @commands.command(pass_context=True, aliases=["be"])
     @checks.admin_or_permissions(manage_server=True)
+    @client.event
     async def betevent(self, ctx):
         """Create event"""
 
         #Your code will go here
         user = ctx.message.author
-        await self.bot.say("Event name?")
+        await self.bot.say("What is the name of the event?")
         eventname = await self.bot.wait_for_message(timeout=30, author=user)
-        eventname = str(answer.content)
-        if answer is None:
+        eventname = str(eventname.content)
+        if eventname is None:
             await self.bot.say("You didn't enter anything. Event cancelled")
             return
-        await self.bot.say("Event name: " + eventname)
+        await self.bot.say("Event name: \n" + eventname)
+        await self.bot.say("What is the possible outcomes of the event? You must have atleast 2. To stop inputting outcomes simply type `.`")
+        a = 1
+        mesage = ""
+        while not message == ".":
+            outcome[a] = await self.bot.wait_for_message(timeout=30, author=user)
+            outcome[a] = str(outcome[a].content)
+            if outcome[a] is None:
+                if a == 3:
+                    message = "."
+                else:
+                    await self.bot.say("You didn't enter anything. Event cancelled")
+                    return
+            else:
+                message = outcome[a]
+            a += 1
+        await self.bot.say("Outcomes: ")
+        i = 1
+        while i < a:
+            await self.bot.sat(outcomes[i])
+            i += 1
         
 
 def check_folders():
