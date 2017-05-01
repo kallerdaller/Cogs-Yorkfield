@@ -110,7 +110,7 @@ class EventBets:
         self.json_data["Events"][str(numberofcurrentevents+1)]["CurrentUsers"] = 0
         c = 0
         while c < len(outcome):
-            print(len(outcome))
+            print(len(outcome[c]))
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"][str(c+1)] = outcome[c]
             c += 1
