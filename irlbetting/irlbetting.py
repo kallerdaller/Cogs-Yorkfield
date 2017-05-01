@@ -99,6 +99,7 @@ class EventBets:
             return
         await self.bot.say("The event happens at " + str(hour) + ":00 on " + str(month) + "/" + str(day))
         numberofcurrentevents = self.json_data["Events"]["CurrentEvents"]
+        self.json_data["Events"][str(numberofcurrentevents+1)] = {}
         self.json_data["Events"][str(numberofcurrentevents+1)]["Name"] = eventname
         self.json_data["Events"][str(numberofcurrentevents+1)]["Multiplier"] = payoutM
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Month"] = month
