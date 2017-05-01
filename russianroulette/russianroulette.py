@@ -79,7 +79,7 @@ class Russianroulette:
             pass
         if isinstance(bet , int):
             if bank.account_exists(user):
-                if bank.get_balance(user) > bet:
+                if bank.get_balance(user) >= bet:
                     self.json_data["System"]["Bet"] = bet
                     self.json_data["Players"]["1"] = user.id
                     self.json_data["System"]["Player Count"] += 1
@@ -105,7 +105,7 @@ class Russianroulette:
             if user.id == self.json_data["Players"]["1"] or user.id == self.json_data["Players"]["2"] or user.id == self.json_data["Players"]["3"] or user.id == self.json_data["Players"]["4"] or user.id == self.json_data["Players"]["5"] or user.id == self.json_data["Players"]["6"]:
                 await self.bot.say("You're already entered")
             else:
-                if bank.get_balance(user) > bet:
+                if bank.get_balance(user) >= bet:
                     await self.bot.say("The bet is set to: $" + str(bet) + "\nWould you still like to enter? Y/N")
                     answer = ""
                     answer = await self.bot.wait_for_message(timeout=10, author=user)
