@@ -108,13 +108,10 @@ class EventBets:
         self.json_data["Events"][str(numberofcurrentevents+1)]["Date"]["Hour"] = hour
         self.json_data["Events"][str(numberofcurrentevents+1)]["Users"] = {}
         self.json_data["Events"][str(numberofcurrentevents+1)]["CurrentUsers"] = 0
+        self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
         c = 0
-        while c < len(outcome):
-            self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"] = {}
+        while c < len(outcome)-1:
             self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"][str(c+1)] = outcome[c]
-            print(self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"])
-            print(len(self.json_data["Events"][str(numberofcurrentevents+1)]["Outcomes"]))
-            dataIO.save_json(self.file_path, self.json_data)
             c += 1
         self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"]+1
         dataIO.save_json(self.file_path, self.json_data)
