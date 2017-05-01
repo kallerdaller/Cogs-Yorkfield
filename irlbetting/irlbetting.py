@@ -130,6 +130,7 @@ class EventBets:
         a = 1
         while a <= numberofcurrentevents:
             await self.bot.say(str(a) + ": " + self.json_data["Events"][str(numberofcurrentevents)]["Name"])
+            a += 1
         
         
 def check_folders():
