@@ -264,7 +264,7 @@ class EventBets:
         i = 1
         await self.bot.say("The outcomes for this event were: ")
         while i <= len(self.json_data["Events"][str(event)]["Outcomes"]):
-            await self.bot.say(str(i) + ": "self.json_data["Events"][str(event)]["Outcomes"][str(i)])
+            await self.bot.say(str(i) + ": " + self.json_data["Events"][str(event)]["Outcomes"][str(i)])
             i += 1
         await self.bot.say("Which was the winning outcome?")
         outcome = self.bot.wait_for_message(timeout = 30, author = user)
