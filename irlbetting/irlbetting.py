@@ -5,7 +5,7 @@ from .utils import checks
 import asyncio
 from .utils.dataIO import dataIO
 import os
-import datetime
+import time
 
 client = discord.Client()
 
@@ -201,10 +201,9 @@ class EventBets:
     async def finishevent(self, ctx):
         """Finish event"""
         
-        now = datetime.datetime.now()
-        month = now.month
-        day = now.day
-        hour = now.hour
+        month = time.strftime('%M')
+        day = time.strftime('%D')
+        hour = time.strftime('%h')
         await self.bot.say(str(now))
         await self.bot.say(str(now.month))
         await self.bot.say(str(now.day))
