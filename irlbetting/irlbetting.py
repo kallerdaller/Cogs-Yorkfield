@@ -5,6 +5,7 @@ from .utils import checks
 import asyncio
 from .utils.dataIO import dataIO
 import os
+import datetime
 
 client = discord.Client()
 
@@ -194,6 +195,18 @@ class EventBets:
         dataIO.save_json(self.file_path, self.json_data)
         await self.bot.say("You have placed $" + str(bet) + " on " + str(self.json_data["Events"][str(event)]["Users"][str(numberofcurrentusers+1)]["Choice"]))
         
+    @commands.command(pass_context=True, aliases=["fe", "finishresults"])
+    @checks.admin_or_permissions(manage_server=True)
+    @client.event
+    async def finishevent(self, ctx):
+        """Finish event"""
+        
+        #month = 
+        #day = 
+        #hour = 
+        now = datetime.datetime.now()
+        await self.bot.say(str(now))
+    
                    
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
