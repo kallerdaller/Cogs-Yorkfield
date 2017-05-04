@@ -179,16 +179,16 @@ class EventBets:
             await self.bot.say(str(d) + ": " + self.json_data["Events"][str(event)]["Outcomes"][str(d)])
             d += 1
         await self.bot.say("Enter the number of the outcome you would like to bet on: ")
-        outcome = await self.bot.wait_for_message(timeout = 30, author = user)
-        if outcome is None:
+        result = await self.bot.wait_for_message(timeout = 30, author = user)
+        if result is None:
             await self.bot.say("You didn't enter anything. Bet cancelled")
             return
         try:
-            outcome = int(outcome.content)
+            result = int(result.content)
         except ValueError:
             await self.bot.say("You need to enter a number. Bet cancelled")
             return
-        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Outcomes"][str(outcome)] + ". You have $" + str(bank.get_balance(user)) + ". How much would you like to bet?")
+        await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Outcomes"][str(result)] + ". You have $" + str(bank.get_balance(user)) + ". How much would you like to bet?")
         bet = await self.bot.wait_for_message(timeout = 30, author = user)
         if bet is None:
             await self.bot.say("You didn't enter anything. Bet cancelled")
