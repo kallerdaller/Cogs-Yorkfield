@@ -165,7 +165,7 @@ class EventBets:
                 return
             i += 1
         if int(time.strftime('%m')) >= self.json_data["Events"][str(event)]["Date"]["Month"]:
-            if int(time.strftime('%d')) >= self.json_data["Events"][str(event)]["Date"]["Date"]:
+            if int(time.strftime('%d')) >= self.json_data["Events"][str(event)]["Date"]["Day"]:
                 tz = time.strftime('%z')
                 tz = list(tz)
                 tz = str(tz[0]+tz[1]+tz[2])
