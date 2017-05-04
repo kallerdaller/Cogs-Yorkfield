@@ -213,7 +213,7 @@ class EventBets:
             tzoffset = list(tzoffset)
             tzoffset = str(tzoffset[0]+tzoffset[1]+tzoffset[2])
             tzoffset = int(tzoffset)
-            hour += -(tzoffset+1)
+            hour += -(tzoffset-1)
         if hour > 24:
             hour += -24
             day += 1
