@@ -164,9 +164,9 @@ class EventBets:
                 await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
                 return
             i += 1
-        if time.strftime('%m') == self.json_data["Events"][str(event)]["Date"]["Month"]:
-            if time.strftime('%d') == self.json_data["Events"][str(event)]["Date"]["Date"]:
-                if time.strftime('%H') -(time.strftime('%z')-1) == int(self.json_data["Events"][str(event)]["Date"]["Hour"])-1:
+        if time.strftime('%m') >= self.json_data["Events"][str(event)]["Date"]["Month"]:
+            if time.strftime('%d') >= self.json_data["Events"][str(event)]["Date"]["Date"]:
+                if time.strftime('%H') -(time.strftime('%z')-1) >= int(self.json_data["Events"][str(event)]["Date"]["Hour"])-1:
                     await self.bot.say("You must place bets before there is one hour before the event")
                     return
         await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". \nThe outcomes for this event are:")
