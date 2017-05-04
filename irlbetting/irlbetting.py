@@ -125,6 +125,13 @@ class EventBets:
         
         user = ctx.message.author
         bank = self.bot.get_cog('Economy').bank
+        month = time.strftime('%m')
+        day = time.strftime('%d')
+        hour = time.strftime('%H')
+        tzoffset = time.strftime('%z')
+        month = int(month)
+        day = int(day)
+        hour = int(hour)
         if not bank.account_exists(user):
             await self.bot.say("You don't have a bank account so you can't bet on events. Do `*bank register` to make an account")
             return
@@ -157,6 +164,11 @@ class EventBets:
                 await self.bot.say("You cannot bet on an event more than once. Bet cancelled")
                 return
             i += 1
+        if time.strftime('%m') == self.json_data["Events"][str(event)]["Date"]["Month"]:
+            if time.strftime('%d') == self.json_data["Events"][str(event)]["Date"]["Date"]:
+                if time.strftime('%H') -(time.strftime('%z')-1) == int(self.json_data["Events"][str(event)]["Date"]["Hour"])-1:
+                    await self.bot.say("You must place bets before there is one hour before the event")
+                    return
         await self.bot.say("You have picked: " + self.json_data["Events"][str(event)]["Name"] + ". \nThe outcomes for this event are:")
         d = 1
         while d <= len(self.json_data["Events"][str(event)]["Outcomes"]):
@@ -208,7 +220,6 @@ class EventBets:
         month = int(month)
         day = int(day)
         hour = int(hour)
-        await self.bot.say(str(hour))
         if not tzoffset == 0:
             tzoffset = list(tzoffset)
             tzoffset = str(tzoffset[0]+tzoffset[1]+tzoffset[2])
@@ -229,7 +240,7 @@ class EventBets:
         elif day == 32 and month == 12:
             day += -31
             month = 1
-        await self.bot.say(str(hour))
+        
     
                    
 def check_folders():
