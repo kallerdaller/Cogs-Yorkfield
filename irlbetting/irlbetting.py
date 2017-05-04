@@ -201,11 +201,14 @@ class EventBets:
     async def finishevent(self, ctx):
         """Finish event"""
         
-        #month = 
-        #day = 
-        #hour = 
         now = datetime.datetime.now()
+        month = now.month
+        day = now.day
+        hour = now.hour
         await self.bot.say(str(now))
+        await self.bot.say(str(now.month))
+        await self.bot.say(str(now.day))
+        await self.bot.say(str(now.hour))
     
                    
 def check_folders():
