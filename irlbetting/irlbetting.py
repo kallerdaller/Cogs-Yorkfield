@@ -209,6 +209,7 @@ class EventBets:
         await self.bot.say(str(now.month))
         await self.bot.say(str(now.day))
         await self.bot.say(str(now.hour))
+        await self.bot.say(str(strdatetime.tzinfo))
     
                    
 def check_folders():
