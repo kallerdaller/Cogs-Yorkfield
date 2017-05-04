@@ -201,9 +201,9 @@ class EventBets:
     async def finishevent(self, ctx):
         """Finish event"""
         
-        month = time.strftime('%M')
-        day = time.strftime('%D')
-        hour = time.strftime('%h')
+        month = time.strftime('%m')
+        day = time.strftime('%d')
+        hour = time.strftime('%H')
         await self.bot.say(str(month))
         await self.bot.say(str(day))
         await self.bot.say(str(hour))
