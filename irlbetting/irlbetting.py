@@ -88,7 +88,7 @@ class EventBets:
         except ValueError:
             await self.bot.say("You have to enter a number. Event cancelled")
             return 
-        await self.bot.say("What hour of the day does the event happen? (Must be in 24 hour format IE: 9PM is 21)")
+        await self.bot.say("What hour of the day does the event happen? (Bot configured for BST +1) (Must be in 24 hour format IE: 9PM is 21)")
         hour = await self.bot.wait_for_message(timeout=30, author = user)
         if hour is None:
             await self.bot.say("You didn't enter anything. Event cancelled")
