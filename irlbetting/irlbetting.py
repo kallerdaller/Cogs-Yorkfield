@@ -209,6 +209,11 @@ class EventBets:
         await self.bot.say(str(day))
         await self.bot.say(str(hour))
         await self.bot.say(str(tzoffset))
+        if not tzoffset == 0:
+            tzoffset = tzoffset.split()
+            tzoffset = str(tzoffset[0]+tzoffset[1]+tzoffset[2])
+            tzoffset = int(tzoffset)
+        await self.bot.say(str(tzoffset))
     
                    
 def check_folders():
