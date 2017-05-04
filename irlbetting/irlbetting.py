@@ -217,6 +217,8 @@ class EventBets:
     async def finishevent(self, ctx):
         """Finish event"""
         
+        user = ctx.message.author
+        bank = self.bot.get_cog('Economy').bank
         month = time.strftime('%m')
         day = time.strftime('%d')
         hour = time.strftime('%H')
@@ -244,9 +246,43 @@ class EventBets:
         elif day == 32 and month == 12:
             day += -31
             month = 1
+        i = 1
+        await self.bot.say("Current events are:")
+        while 1 <= int(self.json_data["Events"]["CurrentEvents"]):
+            await self.bot.say(str(i) + ": " + self.json_data["Events"][str(i)]["Name"])
+            i += 1
+        await self.bot.say("Which event would you like to add finishing data to?")
+        event = await self.bot.wait_for_message(timeout = 30, author = user)
+        if event is None:
+            await self.bot.say("You didn't type anything. Cancelling action")
+            return
+        try:
+            event = int(event.content)
+        except ValueError:
+            await self.bot.say("You didn't enter a number, cancelling action")
+            return
+        i = 1
+        await self.bot.say("The outcomes for this event were: ")
+        while i <= len(self.json_data["Events"][str(event)]["Outcomes"]):
+            await self.bot.say(str(i) + ": "self.json_data["Events"][str(event)]["Outcomes"][str(i)])
+            i += 1
+        await self.bot.say("Which was the winning outcome?")
+        outcome = self.bot.wait_for_message(timeout = 30, author = user)
+        if outcome is None:
+            await self.bot.say("You didn't type anything. Cancelling action")
+            return
+        try:
+            outcome = int(outcome.content)
+        except ValueError:
+            await self.bot.say("You didn't enter a number, cancelling action")
+            return
+        i = 1
+        while i <= int(self.json_data["Events"][str(event)]["CurrentUsers"]):
+            if outcome == int(self.json_data["Events"][str(event)]["Users"][str(i)]["Choice"]):
+                player = discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)]["Users"][str(i)]["ID"])
+                bank.deposit_credits(player, int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"]))
+                await self.bot.say(player.mention + "you have won $" + int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"]) + " from your bet")
         
-    
-                   
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
