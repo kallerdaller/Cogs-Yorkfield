@@ -205,6 +205,9 @@ class EventBets:
         day = time.strftime('%d')
         hour = time.strftime('%H')
         tzoffset = time.strftime('%z')
+        month = int(month)
+        day = int(day)
+        hour - int(hour)
         if not tzoffset == 0:
             tzoffset = list(tzoffset)
             tzoffset = str(tzoffset[0]+tzoffset[1]+tzoffset[2])
