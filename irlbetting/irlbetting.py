@@ -248,7 +248,7 @@ class EventBets:
             month = 1
         i = 1
         await self.bot.say("Current events are:")
-        while 1 <= int(self.json_data["Events"]["CurrentEvents"]):
+        while i <= int(self.json_data["Events"]["CurrentEvents"]):
             await self.bot.say(str(i) + ": " + self.json_data["Events"][str(i)]["Name"])
             i += 1
         await self.bot.say("Which event would you like to add finishing data to?")
