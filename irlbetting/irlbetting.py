@@ -204,11 +204,10 @@ class EventBets:
         month = time.strftime('%M')
         day = time.strftime('%D')
         hour = time.strftime('%h')
-        await self.bot.say(str(now))
-        await self.bot.say(str(now.month))
-        await self.bot.say(str(now.day))
-        await self.bot.say(str(now.hour))
-        await self.bot.say(datetime.tzname())
+        await self.bot.say(str(month))
+        await self.bot.say(str(day))
+        await self.bot.say(str(hour))
+        await self.bot.say(time.tzname())
     
                    
 def check_folders():
