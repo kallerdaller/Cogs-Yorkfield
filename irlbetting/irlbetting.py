@@ -205,16 +205,28 @@ class EventBets:
         day = time.strftime('%d')
         hour = time.strftime('%H')
         tzoffset = time.strftime('%z')
-        await self.bot.say(str(month))
-        await self.bot.say(str(day))
-        await self.bot.say(str(hour))
-        await self.bot.say(str(tzoffset))
         if not tzoffset == 0:
             tzoffset = list(tzoffset)
-            await self.bot.say(str(tzoffset))
             tzoffset = str(tzoffset[0]+tzoffset[1]+tzoffset[2])
             tzoffset = int(tzoffset)
-        await self.bot.say(str(tzoffset))
+            hour += -(tzoffset+1)
+        if hour > 24:
+            hour += -24
+            day += 1
+        if day == 29 and month == 2:
+            day += -28
+            month += 1
+        elif day == 31 and (month == 4 or month == 6 or month == 9 or month == 11):
+            day += -30
+            month += 1
+        elif day == 32 and (month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10):
+            day += -31
+            month += 1
+        elif day == 32 and month == 12:
+            day += -31
+            month = 1
+        
+        await self.bot.say(str(hour))
     
                    
 def check_folders():
