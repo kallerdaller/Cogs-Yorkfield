@@ -295,6 +295,7 @@ class EventBets:
         else:
             self.json_data["Events"][str(i)] = {}
             self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"] - 1
+        dataIO.save_json(self.file_path, self.json_data)
         
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
