@@ -311,7 +311,7 @@ class EventBets:
         while i < self.json_data["Events"]["CurrentEvents"]:
             await self.bot.say(str(i) + " : " + self.json_data["Events"][str(i)]["Name"])
         await self.bot.say("Which event would you like to cancel?")
-        event = await self.bot.wait_for_messsge(timeout = 30, author = user)
+        event = await self.bot.wait_for_message(timeout = 30, author = user)
         if event is None:
             await self.bot.say("You didn't enter anything. Cancelling action")
             return
