@@ -344,6 +344,7 @@ class EventBets:
         await self.bot.say("You have deleted this event")
         
         
+        
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
