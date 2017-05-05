@@ -297,6 +297,51 @@ class EventBets:
             self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"] - 1
         dataIO.save_json(self.file_path, self.json_data)
         
+        
+    @commands.command(pass_context=True, aliases=["de", "cancelevent", "eventcancel"])
+    @checks.admin_or_permissions(manage_server=True)
+    @client.event
+    async def deleteevent(self, ctx):
+        """Cancel event"""
+        
+        user = ctx.message.author
+        bank = self.bot.get_cog('Economy').bank
+        await self.bot.say("Current events are: ")
+        i = 1
+        while i < self.json_data["Events"]["CurrentEvents"]:
+            await self.bot.say(str(i) + " : " + self.json_data["Events"][str(i)]["Name"])
+        await self.bot.say("Which event would you like to cancel?")
+        event = await self.bot.wait_for_messge(timeout = 30, author = user)
+        if event is None:
+            await self.bot.say("You didn't enter anything. Cancelling action")
+            return
+        try:
+            int(event.content)
+        except ValueError:
+            await self.bot.say("You didn't enter a number. Cancelling action")
+            return
+        i = event
+        a = 0
+        c = 1
+        while c < len(self.json_data["Events"][str(i)]["Users"]):
+            player = discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(i)]["Users"][str(c)]["ID"])
+            bank.deposit_credits(player, int(self.json_data["Events"][str(event)]["Users"][str(c)]["Bet"]))
+            await self.bot.say(player.mention + " you have received $" + str(int(self.json_data["Events"][str(event)]["Users"][str(c)]["Bet"])) + " as one of the events you bet on was cancelled")
+            c += 1
+        if i < self.json_data["Events"]["CurrentEvents"]:
+            while i < self.json_data["Events"]["CurrentEvents"]:
+                self.json_data["Events"][str(i)] = self.json_data["Events"][str(i+1)]
+                i += 1
+                a += 1
+            self.json_data["Events"][str(i)] = {}
+            self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"]-a
+        else:
+            self.json_data["Events"][str(i)] = {}
+            self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"] - 1
+        dataIO.save_json(self.file_path, self.json_data)
+        await self.bot.say("You have deleted this event")
+        
+        
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
