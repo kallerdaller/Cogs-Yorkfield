@@ -308,8 +308,9 @@ class EventBets:
         bank = self.bot.get_cog('Economy').bank
         await self.bot.say("Current events are: ")
         i = 1
-        while i < self.json_data["Events"]["CurrentEvents"]:
+        while i <= self.json_data["Events"]["CurrentEvents"]:
             await self.bot.say(str(i) + " : " + self.json_data["Events"][str(i)]["Name"])
+            i += 1
         await self.bot.say("Which event would you like to cancel?")
         event = await self.bot.wait_for_message(timeout = 30, author = user)
         if event is None:
