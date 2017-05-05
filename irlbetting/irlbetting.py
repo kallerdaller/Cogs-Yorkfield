@@ -324,7 +324,8 @@ class EventBets:
         i = event
         a = 0
         c = 1
-        while c < self.json_data["Events"][str(i)]["CurrentUsers"]:
+        print(i)
+        while c <= self.json_data["Events"][str(i)]["CurrentUsers"]:
             player = discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(i)]["Users"][str(c)]["ID"])
             bank.deposit_credits(player, int(self.json_data["Events"][str(event)]["Users"][str(c)]["Bet"]))
             await self.bot.say(player.mention + " you have received $" + str(int(self.json_data["Events"][str(event)]["Users"][str(c)]["Bet"])) + " as one of the events you bet on was cancelled")
