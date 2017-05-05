@@ -283,6 +283,19 @@ class EventBets:
                 bank.deposit_credits(player, int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"]))
                 await self.bot.say(player.mention + " you have won $" + str(int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"])) + " from your bet")
             i += 1
+        i = event
+        a = 0
+        if self.json_data["Events"]["CurrentEvents"] > event:
+            while i < self.json_data["Events"]["CurrentEvents"]:
+                self.json_data["Events"][str(i)] = self.json_data["Events"][str(i+1)]
+                i += 1
+                a += 1
+            self.json_data["Events"][str(i)] = {}
+            self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"] - a
+        else:
+            self.json_data["Events"][str(i)] = {}
+            self.json_data["Events"]["CurrentEvents"] = self.json_data["Events"]["CurrentEvents"] - 1
+        
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
