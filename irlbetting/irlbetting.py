@@ -282,7 +282,7 @@ class EventBets:
                 player = discord.utils.get(ctx.message.server.members, id=self.json_data["Events"][str(event)]["Users"][str(i)]["ID"])
                 bank.deposit_credits(player, int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"]))
                 await self.bot.say(player.mention + "you have won $" + str(int(self.json_data["Events"][str(event)]["Users"][str(i)]["Bet"])*int(self.json_data["Events"][str(event)]["Multiplier"])) + " from your bet")
-        
+            i += 1
 def check_folders():
     if not os.path.exists("data/irlbetting"): 
         print("Creating data/irlbetting floder...")  
