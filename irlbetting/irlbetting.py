@@ -317,7 +317,7 @@ class EventBets:
             await self.bot.say("You didn't enter anything. Cancelling action")
             return
         try:
-            int(event.content)
+            event = int(event.content)
         except ValueError:
             await self.bot.say("You didn't enter a number. Cancelling action")
             return
