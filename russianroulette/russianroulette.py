@@ -169,7 +169,9 @@ class Russianroulette:
         time.sleep(2)
         await self.bot.say("They pull the trigger...")
         time.sleep(1)
-        if randint(0, 10) >= 4:
+        rand = randint(0,10)
+        await self.bot.say(str(rand))
+        if rand >= 4:
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " you're still alive")
         else: 
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " shot their brains out")
