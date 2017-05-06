@@ -31,6 +31,7 @@ class Russianroulette:
             elif self.json_data["System"]["Status"] == "Waiting":
                 if user.id == self.json_data["Players"]["1"] and self.json_data["System"]["Player Count"] > 1:
                     totalPlayers = self.json_data["System"]["Player Count"]
+                    self.json_data["System"]["Status"] = "Started"
                     await self.startGame(bank, ctx, totalPlayers)
                 else:
                     await self.bot.say("Game has been made, to join it type `*rr join`. Only the creator of the roulette can start it and there must be more than 1 person")
@@ -170,8 +171,7 @@ class Russianroulette:
         await self.bot.say("They pull the trigger...")
         time.sleep(1)
         rand = randint(0,5)
-        await self.bot.say(str(rand))
-        if rand >= 2:
+        if rand >= 3:
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " you're still alive")
         else: 
             await self.bot.say(discord.utils.get(ctx.message.server.members, id=self.json_data["Players"][str((a%7))]).mention + " shot their brains out")
