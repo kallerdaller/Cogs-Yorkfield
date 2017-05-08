@@ -145,6 +145,7 @@ class Hunting:
             return message.content.lower().split()[0] == 'bang' or message.content.lower().split()[0] == 'b'
 
         animal = random.choice(list(self.animals.keys()))
+        bank = self.bot.get_cog('Economy').bank
         await self.bot.send_message(channel, self.animals[animal])
         message = await self.bot.wait_for_message(channel=channel, timeout=self.settings['wait_for_bang_timeout'], check=check)
         if message:
@@ -152,6 +153,9 @@ class Hunting:
             if random.randrange(0, 17) > 1:
                 await self.add_score(server, author, animal)
                 msg = '**{} shot a {}!**'.format(author.mention, animal)
+                if bank.account_exists(author):
+                    bank.deposit_credits(author, 400)
+                    msg += "\nYou received $300"
             else:
                 msg = '**{} missed the shot and the {} got away!**'.format(author.mention, animal)
         else:
