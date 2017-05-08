@@ -155,7 +155,7 @@ class Hunting:
                 msg = '**{} shot a {}!**'.format(author.mention, animal)
                 if bank.account_exists(author):
                     bank.deposit_credits(author, 400)
-                    msg += "\nYou received $400"
+                    msg = msg + "\nYou received $400"
             else:
                 msg = '**{} missed the shot and the {} got away!**'.format(author.mention, animal)
         else:
