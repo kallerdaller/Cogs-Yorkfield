@@ -14,7 +14,7 @@ class Bottlespin:
     async def spin(self, ctx, role):
         """Spin the bottle"""
 
-        roles = [ctx.message.server.roles.name]
+        roles = [ctx.server.roles.name]
         await self.bot.say(str(roles))
         author = ctx.message.author
         server = ctx.message.server
