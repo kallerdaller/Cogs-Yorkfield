@@ -20,7 +20,8 @@ class Bottlespin:
         for name in roles:
             if name is str:
                 rolesname.append(name)
-        await self.bot.say(str(roles.name))
+        await self.bot.say(str(roles))
+        await self.bot.say(str(rolesname))
         author = ctx.message.author
         server = ctx.message.server
 
