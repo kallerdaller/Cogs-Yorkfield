@@ -2,9 +2,6 @@ import discord
 from discord.ext import commands
 from random import choice
 
-# bottlespin cog made from a try a new coder had.
-# This is not the code he made but a much better version incase someone
-# else wants it
 
 
 class Bottlespin:
@@ -14,7 +11,7 @@ class Bottlespin:
         self.bot = bot
 
     @commands.command(pass_context=True, no_pm=True, alias=["bottlespin"])
-    async def spin(self, ctx, role: str='@everyone'):
+    async def spin(self, ctx, role):
         """Spin the bottle"""
 
         roles = [r.name for r in ctx.message.server.roles]
