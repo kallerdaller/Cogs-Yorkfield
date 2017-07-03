@@ -11,7 +11,7 @@ class Bottlespin:
         self.bot = bot
 
     @commands.command(pass_context=True, no_pm=True, alias=["bottlespin"])
-    async def spin(self, ctx, role):
+    async def spin(self, ctx):
         """Spin the bottle"""
 
         roles = [r.name for r in ctx.message.server.roles]
