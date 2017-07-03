@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "Kaller",
+    "SHORT" : "Bottle spins",
+    "INSTALL_MSG" : "Successfully installed Bottle Spinning, the command is `[p]spin` or `[p]bottlespin`",
+    "DESCRIPTION" : "Bottle spinning in Discord now without a bottle",
+    "DISABLED" : false,
+    "NAME" : "Bottle spin",
+    "TAGS" : ["yorkfield", "gambling", "economy"],
+    "HIDDEN" : false,
+}
