@@ -14,11 +14,11 @@ class Bottlespin:
     async def spin(self, ctx, role):
         """Spin the bottle"""
 
-        roles = str(ctx.message.server.roles).lower()
+        roles = ctx.message.server.roles
         if "@" in role:
             await self.bot.say("Please do noy use @ infront of the role. Thank you")
             return
-        rolename = [role.name for role in roles]
+        rolename = [role.name.lower() for role in roles]
         rolename = rolename.lower()
         author = ctx.message.author
         server = ctx.message.server
