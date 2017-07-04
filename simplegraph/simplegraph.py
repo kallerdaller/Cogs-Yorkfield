@@ -84,6 +84,7 @@ class SimpleGraph:
         await self.bot.upload(filepath)
 
 def check_folder():  # Paddo is great
+    print("BLEH")
     if not path.exists("data/sgraph"):
         print("[SimpleGraph]Creating data/sgraph folder...")
         makedirs("data/sgraph")
