@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from random import choice
+import random
 
 
 
@@ -48,7 +48,7 @@ class Bottlespin:
                 await self.bot.say("`Sorry I couldnt find anyone to point the bottle at`")
             return
         else:
-            target = choice(list(target))
+            target = target[radnint(0, len(target))]
 
         await self.bot.say("`{0.display_name}#{0.discriminator} spinned the bottle and it landed on {1.display_name}#{1.discriminator}`".format(author, target))
 
