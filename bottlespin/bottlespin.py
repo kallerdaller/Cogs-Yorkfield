@@ -15,7 +15,7 @@ class Bottlespin:
         """Spin the bottle"""
 
         roles = ctx.message.server.roles
-        role = role.name
+        role = discord.utils.get(ctx.message.server.roles, name=role)
         rolename = [role.name for role in roles]
         await self.bot.say(str(role))
         author = ctx.message.author
