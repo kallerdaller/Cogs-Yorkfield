@@ -10,7 +10,6 @@ class SimpleGraph:
 
     def __init__(self, bot):
         self.bot = bot
-        self.settings = dataIO.load_json('data/sgraph/settings.json')
         self.normalposition = {'x':0, 'y':0}
         self.position = self.normalposition
 
@@ -84,11 +83,9 @@ class SimpleGraph:
         await self.bot.upload(filepath)
 
 def check_folder():  # Paddo is great
-    print("BLEH")
     if not path.exists("data/sgraph"):
         print("[SimpleGraph]Creating data/sgraph folder...")
         makedirs("data/sgraph")
-        dataIo.save_json("data/sgraph/settings.json", {})
 
     if not path.exists("data/sgraph/temp"):
         print("[SimpleGraph]Creating data/sgraph/temp folder...")
