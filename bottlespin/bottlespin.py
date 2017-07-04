@@ -15,8 +15,10 @@ class Bottlespin:
         """Spin the bottle"""
 
         roles = ctx.message.server.roles
-        rolename = [role.name for role in ctx.message.server.roles]
+        rolename = [role.name for role in roles]
+        role = role.name
         await self.bot.say(str(rolename))
+        await self.bot.say(str(role))
         if role in roles:
             await self.bot.say(str(role))
         await self.bot.say(str(roles))
