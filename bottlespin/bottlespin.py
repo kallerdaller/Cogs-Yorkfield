@@ -48,7 +48,7 @@ class Bottlespin:
                 await self.bot.say("`Sorry I couldnt find anyone to point the bottle at`")
             return
         else:
-            target = target[randint(0, len(target))]
+            target = target[randint(0, len(target)-1)]
 
         await self.bot.say("`{0.display_name}#{0.discriminator} spinned the bottle and it landed on {1.display_name}#{1.discriminator}`".format(author, target))
 
