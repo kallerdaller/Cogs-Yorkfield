@@ -18,7 +18,7 @@ class Bottlespin:
         if "@" in role:
             await self.bot.say("Please do noy use @ infront of the role. Thank you")
             return
-        rolename = [role.name.lower() for role in roles]
+        rolename = [str(role.name).lower() for role in roles]
         rolename = rolename.lower()
         author = ctx.message.author
         server = ctx.message.server
