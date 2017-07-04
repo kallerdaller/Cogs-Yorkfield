@@ -88,7 +88,7 @@ def check_folder():  # Paddo is great
     if not path.exists("data/sgraph"):
         print("[SimpleGraph]Creating data/sgraph folder...")
         makedirs("data/sgraph")
-        dataIO.save_json("data/sgraph/settings.json", {})
+        fileIO("data/sgraph/settings.json", "save", {})
 
     if not path.exists("data/sgraph/temp"):
         print("[SimpleGraph]Creating data/sgraph/temp folder...")
