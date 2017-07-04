@@ -16,7 +16,7 @@ class Bottlespin:
 
         roles = ctx.message.server.roles
         rolename = [role.name for role in roles]
-        role = role.name
+        role = discord.utils.get(ctx.message.server.roles, role)
         await self.bot.say(str(rolename))
         await self.bot.say(str(role))
         if role in roles:
