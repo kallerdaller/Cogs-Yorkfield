@@ -14,8 +14,9 @@ class Bottlespin:
     async def spin(self, ctx, role):
         """Spin the bottle"""
 
+        await self.bot.say(str(role))
         roles = [ctx.message.server.roles]
-        role = discord.Role.name
+        await self.bot.say(str(roles[1]))
         if role in roles:
             await self.bot.say(str(role))
         await self.bot.say(str(roles))
