@@ -19,7 +19,7 @@ class Bottlespin:
         if role in roles:
             await self.bot.say(str(role))
         await self.bot.say(str(roles))
-        await self.bot.say(str(roles[1]))
+        await self.bot.say(str(roles[0]))
         author = ctx.message.author
         server = ctx.message.server
 
