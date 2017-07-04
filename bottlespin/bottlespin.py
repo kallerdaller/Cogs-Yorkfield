@@ -28,7 +28,7 @@ class Bottlespin:
             await self.bot.say("`Not enough people are around to spin the bottle`")
             return
 
-        if role in roles:
+        if role in rolename:
             roleexist = True
         else:
             await self.bot.say("`{} is not a exising role`".format(role))
