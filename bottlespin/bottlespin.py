@@ -20,7 +20,7 @@ class Bottlespin:
             return
         rolename = [role.name for role in roles]
         rolename = rolename.lower()
-        roles = roles.lower()
+        roles = map(str.lower, 1)
         author = ctx.message.author
         server = ctx.message.server
 
