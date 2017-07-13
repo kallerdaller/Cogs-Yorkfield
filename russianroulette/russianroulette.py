@@ -20,7 +20,7 @@ class Russianroulette:
     
 
     @commands.command(pass_context=True)
-    async def leaderboard(self, ctx):
+    async def rrboard(self, ctx):
         """Shows the amount of games people have won and the money they've won"""
         
         if self.leaderboard["Leaderboard"]["Player"][0] == 0:
