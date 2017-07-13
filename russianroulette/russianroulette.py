@@ -160,7 +160,7 @@ class Russianroulette:
         l = 0
         while l < len(self.leaderboard["Leaderboard"]["Player"]):
             l += 1
-            if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == str(discord.utils.get(ctx.message.server.members, id=winner).name):
+            if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == "":
                 print("YES")
             else:
                 print("Nah fam")
