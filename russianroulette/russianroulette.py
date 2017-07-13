@@ -23,7 +23,7 @@ class Russianroulette:
     async def rrboard(self, ctx):
         """Shows the amount of games people have won and the money they've won"""
         
-        if self.leaderboard["Leaderboard"]["Player"][0] == 0:
+        if self.leaderboard["Leaderboard"]["Player"]["Name"] == "":
             print("True")
         else:
             print("False")
