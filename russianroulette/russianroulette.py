@@ -34,7 +34,7 @@ class Russianroulette:
             while len(add) < 33:
                 add += " "
             add += str(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"])
-            essage += add + "\n"
+            message += add + "\n"
             await self.bot.say(message)
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
