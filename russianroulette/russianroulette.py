@@ -15,7 +15,7 @@ class Russianroulette:
         self.bot = bot
         self.file_path = "data/russianroulette/russianroulette.json"
         self.json_data = dataIO.load_json(self.file_path) 
-        self.leaderboard_path = "data/russianroilette/leaderboard.json"
+        self.leaderboard_path = "data/russianroulette/leaderboard.json"
         self.leaderboard = dataIO.load_json(self.leaderboard_path)
     
 
