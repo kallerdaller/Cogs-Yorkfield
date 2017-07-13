@@ -184,6 +184,7 @@ class Russianroulette:
                 self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"]) + 1)
                 self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"]) + (self.json_data["System"]["Bet"] * totalPlayers))
                 added = 1
+        dataIO.save_json(self.leaderboard_path, self.leaderboard)  
         added = 0
         self.json_data["Players"]["1"] = ""
         self.json_data["Players"]["2"] = ""
