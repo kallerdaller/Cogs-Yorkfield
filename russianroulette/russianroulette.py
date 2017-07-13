@@ -159,18 +159,20 @@ class Russianroulette:
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + str(self.json_data["System"]["Bet"] * totalPlayers))
         l = 0
         added = 0
-        print(str(winner))
-        print(str(discord.utils.get(ctx.message.server.members, id=winner).name))
         while l <= len(self.leaderboard["Leaderboard"]["Player"]) and added == 0:
             print(l)
             l += 1
             try:
                 if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == discord.utils.get(ctx.message.server.members, id=winner).name:
-                    self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] = ""
+                    self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"]) + 1)
+                    self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"]) + (self.json_data["System"]["Bet"] * totalPlayers))
                     added = 1
                 else:
-                    print("Nah fam, wrong person")
-                    added = 1
+                    if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == "":
+                        self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] = str(discord.utils.get(ctx.message.server.members, id=winner).name)
+                        self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"]) + 1)
+                        self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"]) + (self.json_data["System"]["Bet"] * totalPlayers))
+                        added = 1
             except KeyError:
                 add_to = {str(l): {"Name": "",
                                    "Wins": "0",
@@ -178,7 +180,11 @@ class Russianroulette:
                 leaderboard = self.leaderboard
                 leaderboard["Leaderboard"]["Player"].update(add_to)
                 self.leaderboard = leaderboard
+                self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] = str(discord.utils.get(ctx.message.server.members, id=winner).name)
+                self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"]) + 1)
+                self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"] = str(int(self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"]) + (self.json_data["System"]["Bet"] * totalPlayers))
                 added = 1
+        added = 0
         self.json_data["Players"]["1"] = ""
         self.json_data["Players"]["2"] = ""
         self.json_data["Players"]["3"] = ""
