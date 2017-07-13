@@ -24,7 +24,7 @@ class Russianroulette:
         """Shows the amount of games people have won and the money they've won"""
         
         l = 0
-        message = "`Leaderboard (not ordered) \nName:               Earnings:    Wins:\n\n"
+        message = "```Leaderboard (not ordered) \nName:               Earnings:    Wins:\n\n"
         while l < len(self.leaderboard["Leaderboard"]["Player"]):
             l += 1
             add = self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"]
@@ -35,7 +35,7 @@ class Russianroulette:
                 add += " "
             add += str(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"])
             message += add + "\n"
-        message += "`"
+        message += "```"
         await self.bot.say(message)
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
