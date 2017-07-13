@@ -15,6 +15,8 @@ class Russianroulette:
         self.bot = bot
         self.file_path = "data/russianroulette/russianroulette.json"
         self.json_data = dataIO.load_json(self.file_path) 
+        self.leaderboard_path = "data/russianroilette/leaderboard.json"
+        self.leaderboard = dataIO.load_json(self.leaderboard_path)
     
 
         
@@ -147,6 +149,10 @@ class Russianroulette:
                 winner = self.json_data["Players"][str(b)]
         bank.deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + str(self.json_data["System"]["Bet"] * totalPlayers))
+        if self.leaderboard["Leaderboard"]["Player"][0] == 0:
+            print("True")
+        else:
+            print("False")
         self.json_data["Players"]["1"] = ""
         self.json_data["Players"]["2"] = ""
         self.json_data["Players"]["3"] = ""
@@ -219,6 +225,11 @@ def check_files():
     if not dataIO.is_valid_json(f):
         print("Creating defualt russianroulette.json...")
         dataIO.save_json(f, system)
+    leaderboard_json = {"Leaderboard": {"Player": {"": {0}}}}
+    json_name = "data/russianroulette/leaderboard.json"
+    if not dataIO.is_valid_json(json_name):
+        print("Creating defualt leaderboard.json...")
+        dataIO.save_json(json_name, leaderboard_json)
 
 def setup(bot):
     check_folders()
