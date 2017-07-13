@@ -23,10 +23,19 @@ class Russianroulette:
     async def rrboard(self, ctx):
         """Shows the amount of games people have won and the money they've won"""
         
-        if self.leaderboard["Leaderboard"]["Player"]["1"]["Name"] == "":
-            print("True")
-        else:
-            print("False")
+        l = 0
+        message = "`Leaderboard (not ordered) \nName:               Earnings:    Wins:\n\n"
+        while l < len(self.leaderboard["Leaderboard"]["Player"]):
+            l += 1
+            add = self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"]
+            while len(add) < 20:
+                add += " "
+            add += "$" + str(self.leaderboard["Leaderboard"]["Player"][str(l)]["Earnings"])
+            while len(add) < 33:
+                add += " "
+            add += str(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"])
+            essage += add + "\n"
+            await self.bot.say(message)
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
     async def russianroulette(self, ctx, type):
