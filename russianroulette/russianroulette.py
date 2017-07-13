@@ -159,6 +159,7 @@ class Russianroulette:
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + str(self.json_data["System"]["Bet"] * totalPlayers))
         l = 0
         print(len(self.leaderboard["Leaderboard"]["Player"]))
+        print(self.leaderboard["Leaderboard"]["Player"])
         while l <= len(self.leaderboard["Leaderboard"]["Player"]):
             print(l)
             l += 1
