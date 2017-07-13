@@ -172,8 +172,10 @@ class Russianroulette:
             except KeyError:
                 add_to = {str(l): {"Name": "",
                                    "Wins": "0",
-                                   "Earnings": "0"}
-               self.leaderboard["Leaderboard"]["Player"].update(add_to)
+                                   "Earnings": "0"}}
+                leaderboard = self.leaderboard
+                leaderboard["Leaderboard"]["Player"].update(add_to)
+                self.leaderboard = leaderboard
         self.json_data["Players"]["1"] = ""
         self.json_data["Players"]["2"] = ""
         self.json_data["Players"]["3"] = ""
