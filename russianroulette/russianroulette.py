@@ -158,12 +158,15 @@ class Russianroulette:
         bank.deposit_credits(discord.utils.get(ctx.message.server.members, id=winner), self.json_data["System"]["Bet"] * totalPlayers)
         await self.bot.say("Congrats " + discord.utils.get(ctx.message.server.members, id=winner).mention + " on winning $" + str(self.json_data["System"]["Bet"] * totalPlayers))
         l = 0
-        while l < len(self.leaderboard["Leaderboard"]["Player"]):
+        while l <= len(self.leaderboard["Leaderboard"]["Player"]):
             l += 1
-            if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == "":
-                print("YES")
-            else:
-                print("Nah fam")
+            try:
+                if self.leaderboard["Leaderboard"]["Player"][str(l)]["Name"] == "":
+                    print("YES")
+                else:
+                    print("Nah fam, wrong person")
+            except KeyError:
+                print("Nah fam, need extending")
         self.json_data["Players"]["1"] = ""
         self.json_data["Players"]["2"] = ""
         self.json_data["Players"]["3"] = ""
