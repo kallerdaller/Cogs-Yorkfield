@@ -231,7 +231,7 @@ def check_files():
     if not dataIO.is_valid_json(f):
         print("Creating defualt russianroulette.json...")
         dataIO.save_json(f, system)
-    leaderboard_json = {"Leaderboard": {"Player": {"": {0, 0}}}}
+    leaderboard_json = {"Leaderboard": {"Player": {"": {"0", "0"}}}}
     json_name = "data/russianroulette/leaderboard.json"
     if not dataIO.is_valid_json(json_name):
         print("Creating defualt leaderboard.json...")
