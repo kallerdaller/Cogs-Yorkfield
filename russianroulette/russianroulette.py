@@ -35,7 +35,8 @@ class Russianroulette:
                 add += " "
             add += str(self.leaderboard["Leaderboard"]["Player"][str(l)]["Wins"])
             message += add + "\n"
-            await self.bot.say(message)
+        message += "`"
+        await self.bot.say(message)
         
     @commands.command(pass_context=True, aliases=["rr", "russian"])
     async def russianroulette(self, ctx, type):
